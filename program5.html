@@ -1,0 +1,35 @@
+<!----------   //    program5.html ----->  
+<!------Creating a PV for the lower limit of the bird's-eye view---->
+<!DOCTYPE HTML>
+<head>
+<meta charset="UTF-8">
+<title>Create a PV for the lower limit of the bird's-eye view and a PV for a specified number of steps from the lower limit</title>
+
+</head>
+<body>
+<center>
+<h2>Create a PV for the lower limit of the bird's-eye view and a PV <br>for a specified number of steps from the lower limit</h2>
+<table border=0>
+<tr>
+<td>
+Please enter two items: <br>(1) the number of rows from the lowest limit of the PV you want to create (the lowest row is counted as 1) and<br>
+(2) the length of the PV you want to create (half-width numbers).<br>
+ <br>
+Due to processing time limitations, the maximum number of digits is 3000. <br>
+<form action="https://kanazawa-j.sakura.ne.jp/Collatz/paper/program5.php" method="post">
+(1) <input type="text" name="step"  size="10" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+(2) <input type="text" name="length"  size="10" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+If you do not need detailed data, set Detail=No. <br>
+Detail:<input type="radio" name="detail"  value="Yes" checked>Yes   <input type="radio" name="detail"  value="No">No
+</td></tr>
+<br>
+</td></tr>
+<tr><td><input type="submit" value="Execute">
+</form>
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>
+

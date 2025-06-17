@@ -1,0 +1,33 @@
+<!--//    Collatz Conjecture        Program4.html                 //-->
+<!--//    Find the Generator for specified Stopping Time (Glide)  //-->
+<!--//                at the upper limit of the bird's-eye view   //-->
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Find the Generator for specified Stopping Time (Glide) </title>
+</head>
+<body>
+<center>
+<h3> Find the Generator for specified Stopping Time (Glide) <br><font color=red>at the upper limit</font> of the bird's-eye view</h3>
+<table border=0>
+<tr>
+<td>
+Enter the desired maximum value for Stopping Time (Glide). <br>The Stopping Time up to that maximum value and the corresponding Generator will be displayed.<BR>
+<form action="https://kanazawa-j.sakura.ne.jp/Collatz/paper/program4.php" method="post">
+<input type="text" name="length"  size="10" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+
+To display only the last Stopping Time and its Generator in the results above, select "Yes" in the options below.<br>
+<input type="radio" name="option" value="yes"> Yes
+  <input type="radio" name="option" checked value="no"> No
+</td></tr>
+<tr><td><input type="submit" value="Execute">
+</form>
+</td>
+</tr>
+<tr><td><font size=+1 color=red>(Note) If the Stopping time you specify is too large integer, the server may send a Time out message.</font></td></tr>
+</table>
+</center>
+</body>
+</html>
+

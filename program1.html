@@ -1,0 +1,39 @@
+<!---------- Collatz Conjecture    Program1.html---------->
+<!------------------------------------------------------->
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Collatz sequence of integer N</title>
+
+</head>
+<body>
+<center>
+<h2>Collatz sequence of integer N</h2>
+<table border=0>
+<tr>
+<td>When a natural number(>1) is entered, the operation of "dividing by 2 for an even number, multiplying by 3 for an odd number and adding 1 (always an even number), and dividing the result by 2" is repeated. Exit when it reaches 1.<br>
+The result shows the number after each Collatz operation,<br><font color=red> the display (number of operations) when it is less than the original number for the first time,</font><br> <font color=blue>the number of operations until it converges to 1 on the last line, the Glide value, and the Parity Vector</font>.<br><br>
+</td>
+</tr>
+<tr>
+<td>
+Enter any natural number (single-byte number, arbitrary digit).
+<form action="https://kanazawa-j.sakura.ne.jp/Collatz/paper/program1.php" method="post">
+<input type="text" name="txtN1"  size="150" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+</td></tr>
+<tr><td>Show results only: <input type="radio" name="gamen" checked value="Yes"> No       <input type="radio" name="gamen" value="No"> Yes</td></tr>
+<!--------------
+<tr><td>ファイル出力の有無: <input type="radio" name="ffout"  checked value="No"> 出力する（./data/ に出力する）　 <input type="radio" name="ffout" value="No"> 出力しない</td></tr>
+<tr><td>　</td></tr>
+------------------>
+<input type="hidden" name="ffout" value="No">
+<tr><td><input type="submit" value="Execute">
+</form>
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>
+
