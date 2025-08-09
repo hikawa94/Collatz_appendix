@@ -13,8 +13,8 @@ ViewOfBird.html
 <tr><td>
 <font size="3">(Explanation)<br>
 A cell shown in yellow means that if the Parity Vector stops at that cell, the Parity Vector is just converged PV, and if it does not reach 0, it indicates that it is an un converged PV.<br>
-Å@The Parity Vector that continues past the 0 cells will be already converged PV.
-Å@Therefore, the region A (the area to the right of cell 0) in the figure is the un converged region, and the region B(the area to the left of cell 0) is the already converged region.
+„ÄÄThe Parity Vector that continues past the 0 cells will be already converged PV.
+„ÄÄTherefore, the region A (the area to the right of cell 0) in the figure is the un converged region, and the region B(the area to the left of cell 0) is the already converged region.
 </td>
 </tr>
 <tr><td>

@@ -1,6 +1,6 @@
 <?php
 ////////////////////////////////////////////////////////////////////////
-//    Collatz Conjecture program5.php  High-GenLowerPV.php            //
+//    Collatz Conjecture program5.php                                 //
 //    Create a PV for the lower limit of the bird's-eye view and      //
 //    a PV for a specified number of steps from the lower limit       //
 ////////////////////////////////////////////////////////////////////////

@@ -84,7 +84,6 @@ $html_data="<!DOCTYPE HTML>\n";
 //$html_data.="<html lang=\"ja\">\n";
 $html_data.="<html lang=\"en\">\n";
 $html_data.="<head>\n";
-//$html_data.="<meta charset=\"Shift-JIS\">\n";
 $html_data.="<meta charset=\"UTF-8\">\n";
 $html_data.="<title>Graph of Parity Vector</title>\n";
 //function
@@ -116,7 +115,7 @@ for ($i=0;$i<=$Table_max;$i++){
    $Gyo_end="n";
    if($i==0){
       $html_data.="<tr>";
-      $K_table[$i]="kÅ@ d";
+      $K_table[$i]="k&nbsp;&nbsp;&nbsp;d";
       $html_data.="<th align=center nowrap>".$K_table[$i]."</th>";
       for ($j=0;$j<=$Table_max;$j++){
           $Bit_table[$i][$j]=$j;

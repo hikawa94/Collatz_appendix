@@ -62,7 +62,7 @@ $Glide_number=Glide_check($number);
 $Glide_No=$Glide_number[0];
 $Reach1=$Glide_number[1];
 $Glide_Parity=$Glide_number[2];   //parity_vector;
-$Message="StatusFGlide= ".$Glide_No.", Number of times reaching 1 = ".$Reach1."  (<a href=\"javascript:void(0);\" onclick=\"openWin()\">Explanation of This Graph</a>)";
+$Message="Statusï¼šGlide= ".$Glide_No.", Number of times reaching 1 = ".$Reach1."  (<a href=\"javascript:void(0);\" onclick=\"openWin()\">Explanation of This Graph</a>)";
 
 $PATTERN=$Glide_Parity;
 
@@ -83,7 +83,7 @@ $html_data.="<head>\n";
 $html_data.="<meta charset=\"UTF-8\">\n";
 
 $html_data.="<title>Graph of Parity Vector</title>\n";
-// Às‚³‚ê‚éŠÖ”
+// å®Ÿè¡Œã•ã‚Œã‚‹é–¢æ•°
 $html_data.="<script language=\"JavaScript\" type=\"text/javascript\">";
 $html_data.="function openWin(){;";
 $html_data.="  newWin = window.open('ViewOfBird.html','ViewOfBird','width=400,height=300,  scrollbars=no,status=no,toolbar=no,location=no,menubar=no,resizable=yes');";
@@ -103,7 +103,7 @@ $html_data.="<center>\n";
 
 $html_data.="<table border=1 >\n";
 $html_data.="<tr bgcolor=orange>";
-$html_data.="<th bgcolor=white><font size=-1>PV ¨</font>".$Pat_table[0]."</th>";
+$html_data.="<th bgcolor=white><font size=-1>PV â†’</font>".$Pat_table[0]."</th>";
 for($i=0;$i<=$BIT_length-1;$i++){
    $Pat_table[$i+1]=substr($BIT_PATTERN,$i,1);
    $html_data.="<th>".$Pat_table[$i+1]."</th>";
@@ -154,9 +154,9 @@ for($i=0;$i<=$BIT_length-1;$i++){
    $BIT=$Pat_table[$i+1];
    if($Bit_table[$i][$i]=="**") { continue;}
    if($BIT=="0"){
-      $Bit_table[$Pos_i][$Pos_j]="<font color=red><b>‚O</b></font>";
+      $Bit_table[$Pos_i][$Pos_j]="<font color=red><b>ï¼</b></font>";
    }else{
-      $Bit_table[$Pos_i][$Pos_j+1]="<font color=red><b>‚P</b></font>";
+      $Bit_table[$Pos_i][$Pos_j+1]="<font color=red><b>ï¼‘</b></font>";
       $Pos_j++;
    }
 }
