@@ -81,7 +81,7 @@ $Pat_table[0]=" ";
 $Message="After viewing the graph, Click on <a href=\"".$out_file."\" target=\"_blank\"><font size=+2>here</font></a> to display result detailed information on the input PV. (<a href=\"javascript:void(0);\" onclick=\"openWin()\">Explanation of This Graph</a>);";
 
 $html_data="<!DOCTYPE HTML>\n";
-//$html_data.="<html lang=\"ja\">\n";
+//$html_data.="<html lang=\"en\">\n";
 $html_data.="<html lang=\"en\">\n";
 $html_data.="<head>\n";
 $html_data.="<meta charset=\"UTF-8\">\n";
@@ -104,7 +104,7 @@ $html_data.=$Message."\n";
 $html_data.="<center>\n";
 $html_data.="<table border=1 >\n";
 $html_data.="<tr bgcolor=orange>";
-$html_data.="<th bgcolor=white><font size=-2>PV Å®</font>".$Pat_table[0]."</th>";
+$html_data.="<th bgcolor=white><font size=-2>PV ‚Üí</font>".$Pat_table[0]."</th>";
 for($i=0;$i<=$BIT_length-1;$i++){
    $Pat_table[$i+1]=substr($BIT_PATTERN,$i,1);
    $html_data.="<th>".$Pat_table[$i+1]."</th>";
@@ -115,7 +115,7 @@ for ($i=0;$i<=$Table_max;$i++){
    $Gyo_end="n";
    if($i==0){
       $html_data.="<tr>";
-      $K_table[$i]="k&nbsp;&nbsp;&nbsp;d";
+      $K_table[$i]="k„ÄÄ d";
       $html_data.="<th align=center nowrap>".$K_table[$i]."</th>";
       for ($j=0;$j<=$Table_max;$j++){
           $Bit_table[$i][$j]=$j;
@@ -135,7 +135,7 @@ for ($i=0;$i<=$Table_max;$i++){
               }
              } else {
                 if($j==($i+1)){
-                   $Bit_table[$i][$j]="Åñ";
+                   $Bit_table[$i][$j]="Ôºä";
                    $Gyo_end="y";
                 }else {
                    $Bit_table[$i][$j]=" ";
@@ -153,11 +153,11 @@ $Pos_bit=0;
 for($i=0;$i<=$BIT_length-1;$i++){
    $Pos_i=$i+1;
    $BIT=$Pat_table[$i+1];
-   if($Bit_table[$i][$i]=="Åñ") { continue;}
+   if($Bit_table[$i][$i]=="Ôºä") { continue;}
    if($BIT=="0"){
-      $Bit_table[$Pos_i][$Pos_j]="<font color=red><b>ÇO</b></font>";
+      $Bit_table[$Pos_i][$Pos_j]="<font color=red><b>Ôºê</b></font>";
    }else{
-      $Bit_table[$Pos_i][$Pos_j+1]="<font color=red><b>ÇP</b></font>";
+      $Bit_table[$Pos_i][$Pos_j+1]="<font color=red><b>Ôºë</b></font>";
       $Pos_j++;
    }
 }
@@ -180,7 +180,7 @@ for($i=1;$i<=$Table_max;$i++){
        }else {
          $html_data.="<td align=center>".$Bit_table[$i][$j]."</td>";
        } 
-       if($Bit_table[$i][$j]=="Åñ") { 
+       if($Bit_table[$i][$j]=="Ôºä") { 
           break;
        }
     }
@@ -232,10 +232,10 @@ print($html_data);
     // Memory Area
     // Pre_memory
     // $pre_Ratio(Glide/length),$pre_Length,$pre_Pattern,$pre_Ones,$pre_Generator,$pre_Glide
-    // 2^$pre_Length Å®$pre_Power_of_2
+    // 2^$pre_Length ‚Üí$pre_Power_of_2
     // Current_memory
     // $gen_Ratio,$gen_Length,$gen_Pattern,$gen_Ones,$gen_Generator,$gen_Glide
-    // 2^$gen_Length Å®  $gen_Power_of_2
+    // 2^$gen_Length ‚Üí  $gen_Power_of_2
     $zero=gmp_init(0);
     $one=gmp_init(1);
     $one_minus=gmp_init(-1);

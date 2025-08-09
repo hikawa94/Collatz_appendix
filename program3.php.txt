@@ -83,7 +83,7 @@ $html_data.="<head>\n";
 $html_data.="<meta charset=\"UTF-8\">\n";
 
 $html_data.="<title>Graph of Parity Vector</title>\n";
-// 実行される関数
+//execute function
 $html_data.="<script language=\"JavaScript\" type=\"text/javascript\">";
 $html_data.="function openWin(){;";
 $html_data.="  newWin = window.open('ViewOfBird.html','ViewOfBird','width=400,height=300,  scrollbars=no,status=no,toolbar=no,location=no,menubar=no,resizable=yes');";

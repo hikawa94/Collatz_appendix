@@ -1,7 +1,7 @@
 <!---------- Collatz Conjecture    Program1.html---------->
 <!------------------------------------------------------->
 <!DOCTYPE HTML>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Collatz sequence of integer N</title>
