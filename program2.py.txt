@@ -35,7 +35,7 @@ def Glide_check(number):
           if n2 <= 1 :
               break    ## if ( $n2 <= 1) { break }
           n = n + 1 
-          if  (n2 % 2) == 0:   ##if (n2 % 2 == 0) ó]ÇË
+          if  (n2 % 2) == 0:   ##if (n2 % 2 == 0) ‰Ωô„Çä
               n1 = n2
               n2 = n2//2        ##   n2=n2/2
               if ( flag == 0) and (first=="Y") and (n2<N): 
@@ -157,7 +157,7 @@ for  i in range(0,Table_max):
                       Bit_table[i][j]=" "
              else: 
                 if(j==(i+1)):
-                   Bit_table[i][j]="**"   #################
+                   Bit_table[i][j]="Ôºä" 
                    Gyo_end="y"
                 else:
                    Bit_table[i][j]=" "
@@ -171,12 +171,12 @@ Pos_bit=0
 for i in range(0,BIT_length):
    Pos_i=i+1
    BIT=Pat_table[i+1]
-   if(Bit_table[i][i]=='Åñ'):
+   if(Bit_table[i][i]=='Ôºä'):
       continue
    if(BIT=="0"):
-      Bit_table[Pos_i][Pos_j]="<font color=red><b>ÇO</b></font>"
+      Bit_table[Pos_i][Pos_j]="<font color=red><b>Ôºê</b></font>"
    else:
-      Bit_table[Pos_i][Pos_j+1]="<font color=red><b>ÇP</b></font>"
+      Bit_table[Pos_i][Pos_j+1]="<font color=red><b>Ôºë</b></font>"
       Pos_j=Pos_j+1
 
 zen_d=-1
@@ -196,7 +196,7 @@ for i in range(1,Table_max):
                html_data+="<td align=center>"+Bit_table[i][j]+"</td>"
        else: 
             html_data+="<td align=center>"+Bit_table[i][j]+"</td>"
-       if(Bit_table[i][j]=="Åñ"):
+       if(Bit_table[i][j]=="Ôºä"):
           break
        
      html_data+="</tr>"
@@ -211,10 +211,9 @@ print(html_data)
 ## The following is executed only when the first bit of the PV is 1.
 if (BIT_PATTERN[0]==0 ):
     out_html="<!DOCTYPE HTML>\n"
-    out_html+="<html lang=\"ja\">\n"
+    out_html+="<html lang=\"en\">\n"
     out_html+="<head>\n"
     out_html+="<meta charset=\"UTF-8\">\n"
-##    out_html+="<meta charset=\"UTF-8\">\n"
     out_html+="<title>Result detailed information on the input PV</title>\n"
     out_html+="</head>\n"
     out_html+="<body>\n"
@@ -245,11 +244,9 @@ else:
 
 ## Output records
 out_html="<!DOCTYPE HTML>\n"
-out_html+="<html lang=\"ja\">\n"
-##out_html+="<html lang=\"en\">\n"
+out_html+="<html lang=\"en\">\n"
 out_html+="<head>\n"
 out_html+="<meta charset=\"UTF-8\">\n"
-##out_html+="<meta charset=\"UTF-8\">\n"
 out_html+="<title>Result detailed information on the input PV</title>\n"
 out_html+="</head>\n"
 out_html+="<body>\n"
@@ -285,10 +282,10 @@ fp.write(out_html)      ##  output data
 ## Pre_memory
 ## pre_Ratio(Glide/length),pre_Length,pre_Pattern,pre_Ones,
 ## pre_Generator,pre_Glide
-## 2^pre_Length Å®pre_Power_of_2
+## 2^pre_Length ‚Üípre_Power_of_2
 ## Current_memory
 ## gen_Ratio,gen_Length,gen_Pattern,gen_Ones,gen_Generator,gen_Glide
-## 2^gen_Length Å®  gen_Power_of_2
+## 2^gen_Length ‚Üí  gen_Power_of_2
 zero=0
 one=1
 one_minus=-1

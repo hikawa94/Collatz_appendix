@@ -8,7 +8,7 @@ import sys
 import time
 from mpmath import mp
 ########################################################################
-##    High-newCollatzProblem.py                                       ##
+##    Program1.py                                                     ##
 ########################################################################
 def get_message():
     input_message = input()
@@ -20,9 +20,9 @@ if __name__ == '__main__':
     cgitb.enable()
     mp.dps = 200
     mess = get_message()
-    txtN1 = mess[0]   # form.getvalue( 'txtN1', '' )  ’²‚×‚é”’l
-    gamen = mess[1]   # form.getvalue( 'gamen', '' )   ‰æ–Ê‚Ì—L–³
-    ffout=  mess[2]   # form.getvalue( 'ffout', '' )   ƒtƒ@ƒCƒ‹o—Í‚Ì—L–³
+    txtN1 = mess[0]   # form.getvalue( 'txtN1', '' ) 
+    gamen = mess[1]   # form.getvalue( 'gamen', '' )
+    ffout=  mess[2]   # form.getvalue( 'ffout', '' )
     if(txtN1 ==  "0"):
        print("Content-type: text/html; charset=UTF-8")
        print()
@@ -84,7 +84,7 @@ if __name__ == '__main__':
        
         fname=data_path+"/Collatz-"+mojiretu+".csv"
         fp=open(fname,"w")
-        output="Collatz-"+str(n1)+"‚Ì‘€ì‰ß’ö\n"
+        output="Collatz-"+str(n1)+" Collatz process\n"
         fp.write(output)
        
     ###################################################
@@ -108,10 +108,10 @@ if __name__ == '__main__':
                  R = n2 
             if(flag == 1 and first=="Y" ):
                  html_data_add+="<tr>\n"
-                 html_data_add+="<td nowrap>"+str(n1)+" / 2 </td><td>=</td><td align=left nowrap>"+str(n2)+"</td><td nowrap align=left >@<@"+str(N)+"@<font color=red><--- "+str(M)+" times</font></td>\n"
+                 html_data_add+="<td nowrap>"+str(n1)+" / 2 </td><td>=</td><td align=left nowrap>"+str(n2)+"</td><td nowrap align=left >ã€€<ã€€"+str(N)+"ã€€<font color=red><--- "+str(M)+" times</font></td>\n"
                  html_data_add+="</tr>\n"
                  if( ffout == "Yes" ):
-                     output=str(n1)+" / 2 = "+str(n2)+"@<@"+str(N)+"  <--- "+str(M)+"‰ñ–Ú\n"
+                     output=str(n1)+" / 2 = "+str(n2)+" < "+str(N)+"  <--- "+str(M)+"times\n"
                      fp.write(output)
                  first="N"
             else:
@@ -135,11 +135,11 @@ if __name__ == '__main__':
                     R = n2 
                 if(flag == 1 and first=="Y" ):
                     html_data_add+="<tr>\n"
-                    html_data_add+="<td nowrap>("+str(n1)+" * 3 + 1)/2</td><td>=</td><td  align=left nowrap>"+str(n2)+"</td><td nowrap align=left>@<@"+str(N)+"@<font color=red><--- "+str(M)+" times</font></td>\n"
+                    html_data_add+="<td nowrap>("+str(n1)+" * 3 + 1)/2</td><td>=</td><td  align=left nowrap>"+str(n2)+"</td><td nowrap align=left>ã€€<ã€€"+str(N)+"ã€€<font color=red><--- "+str(M)+" times</font></td>\n"
                     html_data_add+="</td>\n" 
                     html_data_add+="</tr>\n"
                     if( ffout == "Yes" ):
-                        output="("+str(n1)+" * 3 + 1)/2 = "+str(n2)+"@<@"+str(N)+" <--- "+str(M)+" times\n"
+                        output="("+str(n1)+" * 3 + 1)/2 = "+str(n2)+" < "+str(N)+" <--- "+str(M)+" times\n"
                 
                     fp.write(output)
                     first="N"
@@ -175,7 +175,7 @@ if __name__ == '__main__':
 
     html_data_add+="<tr>\n"
     html_data_add+="<td colspan=4 align=left>\n" 
-    html_data_add+="<font color=red>Number of times reached to ‚P= "+ str(n) + " times</font><br>\n"
+    html_data_add+="<font color=red>Number of times reached to 1= "+ str(n) + " times</font><br>\n"
     html_data_add+="</td>\n" 
     html_data_add+="</tr>\n"
     html_data_add+="</table>\n"
@@ -184,7 +184,7 @@ if __name__ == '__main__':
         output="Number of times reached to 1= " +str(n)+" times\n"
         output+="Glide("+str(txtN1)+")="+str(M)+"\n"
         output+="Parity vector of Glide confirmation = ("+parity_vector_moji+")\n" 
-        output="Number of times reached to ‚P= "+str(n)+" times\n"
+        output="Number of times reached to 1= "+str(n)+" times\n"
         fp.write(output)
         fp.close()
     html_data_add+="</body>\n"

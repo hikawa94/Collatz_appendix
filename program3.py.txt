@@ -148,11 +148,11 @@ for  i in range(0,Table_max):
    Gyo_end="n"
    if (i==0):
       html_data+="<tr>"    ########
-      K_table[i]="kÅ@ d"
+      K_table[i]="k„ÄÄ d"
       html_data+="<th align=center nowrap>"+K_table[i]+"</th>"
       for j in range(0,Table_max):
            Bit_table[i][j]=j
-           html_data+="<th align=center nowrap>Å@"+str(Bit_table[i][j])+"</th>"
+           html_data+="<th align=center nowrap>„ÄÄ"+str(Bit_table[i][j])+"</th>"
       html_data+="</tr>"
    else:
       K_table[i]=i
@@ -166,7 +166,7 @@ for  i in range(0,Table_max):
                       Bit_table[i][j]=" ";
              else:
                  if(j==(i+1)):
-                      Bit_table[i][j]="**"   #################
+                      Bit_table[i][j]="Ôºä"  
                       Gyo_end="y"
                  else:
                       Bit_table[i][j]=" "
@@ -180,12 +180,12 @@ for i in range(0,BIT_length):
 ##for i in range(0,BIT_length-1):
    Pos_i=i+1
    BIT=Pat_table[i+1]
-   if(Bit_table[i][i]=='**'):
+   if(Bit_table[i][i]=='Ôºä'):
       continue
    if(BIT=="0"):
-      Bit_table[Pos_i][Pos_j]="<font color=red><b>ÇO</b></font>"
+      Bit_table[Pos_i][Pos_j]="<font color=red><b>Ôºê</b></font>"
    else:
-      Bit_table[Pos_i][Pos_j+1]="<font color=red><b>ÇP</b></font>"
+      Bit_table[Pos_i][Pos_j+1]="<font color=red><b>Ôºë</b></font>"
       Pos_j=Pos_j+1
 
 zen_d=-1
@@ -205,7 +205,7 @@ for i in range(1,Table_max):
                html_data+="<td align=center>"+Bit_table[i][j]+"</td>"
         else: 
            html_data+="<td align=center>"+Bit_table[i][j]+"</td>"
-        if(Bit_table[i][j]=="Åñ"):
+        if(Bit_table[i][j]=="Ôºä"):
            break
        
      html_data+="</tr>"
