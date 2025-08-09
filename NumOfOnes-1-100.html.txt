@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--<meta charset="Shift-JIS">-->
+<meta charset="UTF-8">
+<title>Summary table of the number of just converged PVs and un converged PVs by number of ones in PV</title>
+</head>
+<body>
+<center>
+<table border=3 width=80%>
+
+<tr>
+<th align=left nowrap colspan=3>Summary table of the number of just converged PVs and un converged PVs by number of ones in PV(1 to 100)</th></tr>
+
+<tr >
+<td align=left nowrap colspan=3> Explanation of the table below:<br>Symbols: (A) Number of Just converged PVs  (B) Number of Un converged PVs</td></tr>			<tr ><!--<td nowrap align=center width=10%>Glide</td>--><td align=center nowrap width=10%>Number of 1</td><td> (Symbols) Amount of data</td></tr>
+
+<tr><td  rowspan=3 align=center>1</td></tr>
+<tr><td nowrap>(A) 1.000000e+0<br>  1</td></tr>
+<tr><td nowrap>(B) 1.000000e+0<br>  1</td></tr>
+<tr><td  rowspan=3 align=center>2</td></tr>
+<tr><td nowrap>(A) 1.000000e+0<br>  1</td></tr>
+<tr><td nowrap>(B) 2.000000e+0<br>  2</td></tr>
+<tr><td  rowspan=3 align=center>3</td></tr>
+<tr><td nowrap>(A) 2.000000e+0<br>  2</td></tr>
+<tr><td nowrap>(B) 3.000000e+0<br>  3</td></tr>
+<tr><td  rowspan=3 align=center>4</td></tr>
+<tr><td nowrap>(A) 3.000000e+0<br>  3</td></tr>
+<tr><td nowrap>(B) 7.000000e+0<br>  7</td></tr>
+<tr><td  rowspan=3 align=center>5</td></tr>
+<tr><td nowrap>(A) 7.000000e+0<br>  7</td></tr>
+<tr><td nowrap>(B) 1.200000e+1<br>  12</td></tr>
+<tr><td  rowspan=3 align=center>6</td></tr>
+<tr><td nowrap>(A) 1.200000e+1<br>  12</td></tr>
+<tr><td nowrap>(B) 3.000000e+1<br>  30</td></tr>
+<tr><td  rowspan=3 align=center>7</td></tr>
+<tr><td nowrap>(A) 3.000000e+1<br>  30</td></tr>
+<tr><td nowrap>(B) 8.500000e+1<br>  85</td></tr>
+<tr><td  rowspan=3 align=center>8</td></tr>
+<tr><td nowrap>(A) 8.500000e+1<br>  85</td></tr>
+<tr><td nowrap>(B) 1.730000e+2<br>  173</td></tr>
+<tr><td  rowspan=3 align=center>9</td></tr>
+<tr><td nowrap>(A) 1.730000e+2<br>  173</td></tr>
+<tr><td nowrap>(B) 4.760000e+2<br>  476</td></tr>
+<tr><td  rowspan=3 align=center>10</td></tr>
+<tr><td nowrap>(A) 4.760000e+2<br>  476</td></tr>
+<tr><td nowrap>(B) 9.610000e+2<br>  961</td></tr>
+<tr><td  rowspan=3 align=center>11</td></tr>
+<tr><td nowrap>(A) 9.610000e+2<br>  961</td></tr>
+<tr><td nowrap>(B) 2.652000e+3<br>  2652</td></tr>
+<tr><td  rowspan=3 align=center>12</td></tr>
+<tr><td nowrap>(A) 2.652000e+3<br>  2652</td></tr>
+<tr><td nowrap>(B) 8.045000e+3<br>  8045</td></tr>
+<tr><td  rowspan=3 align=center>13</td></tr>
+<tr><td nowrap>(A) 8.045000e+3<br>  8045</td></tr>
+<tr><td nowrap>(B) 1.763700e+4<br>  17637</td></tr>
+<tr><td  rowspan=3 align=center>14</td></tr>
+<tr><td nowrap>(A) 1.763700e+4<br>  17637</td></tr>
+<tr><td nowrap>(B) 5.103300e+4<br>  51033</td></tr>
+<tr><td  rowspan=3 align=center>15</td></tr>
+<tr><td nowrap>(A) 5.103300e+4<br>  51033</td></tr>
+<tr><td nowrap>(B) 1.089500e+5<br>  108950</td></tr>
+<tr><td  rowspan=3 align=center>16</td></tr>
+<tr><td nowrap>(A) 1.089500e+5<br>  108950</td></tr>
+<tr><td nowrap>(B) 3.124550e+5<br>  312455</td></tr>
+<tr><td  rowspan=3 align=center>17</td></tr>
+<tr><td nowrap>(A) 3.124550e+5<br>  312455</td></tr>
+<tr><td nowrap>(B) 6.635350e+5<br>  663535</td></tr>
+<tr><td  rowspan=3 align=center>18</td></tr>
+<tr><td nowrap>(A) 6.635350e+5<br>  663535</td></tr>
+<tr><td nowrap>(B) 1.900470e+6<br>  1900470</td></tr>
+<tr><td  rowspan=3 align=center>19</td></tr>
+<tr><td nowrap>(A) 1.900470e+6<br>  1900470</td></tr>
+<tr><td nowrap>(B) 5.936673e+6<br>  5936673</td></tr>
+<tr><td  rowspan=3 align=center>20</td></tr>
+<tr><td nowrap>(A) 5.936673e+6<br>  5936673</td></tr>
+<tr><td nowrap>(B) 1.347229e+7<br>  13472296</td></tr>
+<tr><td  rowspan=3 align=center>21</td></tr>
+<tr><td nowrap>(A) 1.347229e+7<br>  13472296</td></tr>
+<tr><td nowrap>(B) 3.999389e+7<br>  39993895</td></tr>
+<tr><td  rowspan=3 align=center>22</td></tr>
+<tr><td nowrap>(A) 3.999389e+7<br>  39993895</td></tr>
+<tr><td nowrap>(B) 8.798691e+7<br>  87986917</td></tr>
+<tr><td  rowspan=3 align=center>23</td></tr>
+<tr><td nowrap>(A) 8.798691e+7<br>  87986917</td></tr>
+<tr><td nowrap>(B) 2.579785e+8<br>  257978502</td></tr>
+<tr><td  rowspan=3 align=center>24</td></tr>
+<tr><td nowrap>(A) 2.579785e+8<br>  257978502</td></tr>
+<tr><td nowrap>(B) 8.202367e+8<br>  820236724</td></tr>
+<tr><td  rowspan=3 align=center>25</td></tr>
+<tr><td nowrap>(A) 8.202367e+8<br>  820236724</td></tr>
+<tr><td nowrap>(B) 1.899474e+9<br>  1899474678</td></tr>
+<tr><td  rowspan=3 align=center>26</td></tr>
+<tr><td nowrap>(A) 1.899474e+9<br>  1899474678</td></tr>
+<tr><td nowrap>(B) 5.723030e+9<br>  5723030586</td></tr>
+<tr><td  rowspan=3 align=center>27</td></tr>
+<tr><td nowrap>(A) 5.723030e+9<br>  5723030586</td></tr>
+<tr><td nowrap>(B) 1.280947e+10<br>  12809477536</td></tr>
+<tr><td  rowspan=3 align=center>28</td></tr>
+<tr><td nowrap>(A) 1.280947e+10<br>  12809477536</td></tr>
+<tr><td nowrap>(B) 3.803684e+10<br>  38036848410</td></tr>
+<tr><td  rowspan=3 align=center>29</td></tr>
+<tr><td nowrap>(A) 3.803684e+10<br>  38036848410</td></tr>
+<tr><td nowrap>(B) 8.414180e+10<br>  84141805077</td></tr>
+<tr><td  rowspan=3 align=center>30</td></tr>
+<tr><td nowrap>(A) 8.414180e+10<br>  84141805077</td></tr>
+<tr><td nowrap>(B) 2.483696e+11<br>  248369601964</td></tr>
+<tr><td  rowspan=3 align=center>31</td></tr>
+<tr><td nowrap>(A) 2.483696e+11<br>  248369601964</td></tr>
+<tr><td nowrap>(B) 7.949191e+11<br>  794919136728</td></tr>
+<tr><td  rowspan=3 align=center>32</td></tr>
+<tr><td nowrap>(A) 7.949191e+11<br>  794919136728</td></tr>
+<tr><td nowrap>(B) 1.857112e+12<br>  1857112329035</td></tr>
+<tr><td  rowspan=3 align=center>33</td></tr>
+<tr><td nowrap>(A) 1.857112e+12<br>  1857112329035</td></tr>
+<tr><td nowrap>(B) 5.636545e+12<br>  5636545892795</td></tr>
+<tr><td  rowspan=3 align=center>34</td></tr>
+<tr><td nowrap>(A) 5.636545e+12<br>  5636545892795</td></tr>
+<tr><td nowrap>(B) 1.273290e+13<br>  12732900345928</td></tr>
+<tr><td  rowspan=3 align=center>35</td></tr>
+<tr><td nowrap>(A) 1.273290e+13<br>  12732900345928</td></tr>
+<tr><td nowrap>(B) 3.808811e+13<br>  38088111350198</td></tr>
+<tr><td  rowspan=3 align=center>36</td></tr>
+<tr><td nowrap>(A) 3.808811e+13<br>  38088111350198</td></tr>
+<tr><td nowrap>(B) 1.231102e+14<br>  123110229387834</td></tr>
+<tr><td  rowspan=3 align=center>37</td></tr>
+<tr><td nowrap>(A) 1.231102e+14<br>  123110229387834</td></tr>
+<tr><td nowrap>(B) 2.908383e+14<br>  290838337577435</td></tr>
+<tr><td  rowspan=3 align=center>38</td></tr>
+<tr><td nowrap>(A) 2.908383e+14<br>  290838337577435</td></tr>
+<tr><td nowrap>(B) 8.899493e+14<br>  889949312454085</td></tr>
+<tr><td  rowspan=3 align=center>39</td></tr>
+<tr><td nowrap>(A) 8.899493e+14<br>  889949312454085</td></tr>
+<tr><td nowrap>(B) 2.029460e+15<br>  2029460152095008</td></tr>
+<tr><td  rowspan=3 align=center>40</td></tr>
+<tr><td nowrap>(A) 2.029460e+15<br>  2029460152095008</td></tr>
+<tr><td nowrap>(B) 6.113392e+15<br>  6113392816333320</td></tr>
+<tr><td  rowspan=3 align=center>41</td></tr>
+<tr><td nowrap>(A) 6.113392e+15<br>  6113392816333320</td></tr>
+<tr><td nowrap>(B) 1.375938e+16<br>  13759389839553008</td></tr>
+<tr><td  rowspan=3 align=center>42</td></tr>
+<tr><td nowrap>(A) 1.375938e+16<br>  13759389839553008</td></tr>
+<tr><td nowrap>(B) 4.115629e+16<br>  41156292958100112</td></tr>
+<tr><td  rowspan=3 align=center>43</td></tr>
+<tr><td nowrap>(A) 4.115629e+16<br>  41156292958100112</td></tr>
+<tr><td nowrap>(B) 1.331806e+17<br>  133180667145777072</td></tr>
+<tr><td  rowspan=3 align=center>44</td></tr>
+<tr><td nowrap>(A) 1.331806e+17<br>  133180667145777072</td></tr>
+<tr><td nowrap>(B) 3.153562e+17<br>  315356241137505268</td></tr>
+<tr><td  rowspan=3 align=center>45</td></tr>
+<tr><td nowrap>(A) 3.153562e+17<br>  315356241137505268</td></tr>
+<tr><td nowrap>(B) 9.673038e+17<br>  967303800643232882</td></tr>
+<tr><td  rowspan=3 align=center>46</td></tr>
+<tr><td nowrap>(A) 9.673038e+17<br>  967303800643232882</td></tr>
+<tr><td nowrap>(B) 2.213388e+18<br>  2213388970068123188</td></tr>
+<tr><td  rowspan=3 align=center>47</td></tr>
+<tr><td nowrap>(A) 2.213388e+18<br>  2213388970068123188</td></tr>
+<tr><td nowrap>(B) 6.687324e+18<br>  6687324379116300569</td></tr>
+<tr><td  rowspan=3 align=center>48</td></tr>
+<tr><td nowrap>(A) 6.687324e+18<br>  6687324379116300569</td></tr>
+<tr><td nowrap>(B) 2.179711e+19<br>  21797112395398269352</td></tr>
+<tr><td  rowspan=3 align=center>49</td></tr>
+<tr><td nowrap>(A) 2.179711e+19<br>  21797112395398269352</td></tr>
+<tr><td nowrap>(B) 5.202813e+19<br>  52028134169251235063</td></tr>
+<tr><td  rowspan=3 align=center>50</td></tr>
+<tr><td nowrap>(A) 5.202813e+19<br>  52028134169251235063</td></tr>
+<tr><td nowrap>(B) 1.605096e+20<br>  160509643506854706934</td></tr>
+<tr><td  rowspan=3 align=center>51</td></tr>
+<tr><td nowrap>(A) 1.605096e+20<br>  160509643506854706934</td></tr>
+<tr><td nowrap>(B) 3.697078e+20<br>  369707873749224505928</td></tr>
+<tr><td  rowspan=3 align=center>52</td></tr>
+<tr><td nowrap>(A) 3.697078e+20<br>  369707873749224505928</td></tr>
+<tr><td nowrap>(B) 1.122428e+21<br>  1122428422670255691408</td></tr>
+<tr><td  rowspan=3 align=center>53</td></tr>
+<tr><td nowrap>(A) 1.122428e+21<br>  1122428422670255691408</td></tr>
+<tr><td nowrap>(B) 3.672921e+21<br>  3672921591387837707209</td></tr>
+<tr><td  rowspan=3 align=center>54</td></tr>
+<tr><td nowrap>(A) 3.672921e+21<br>  3672921591387837707209</td></tr>
+<tr><td nowrap>(B) 8.808298e+21<br>  8808298119720364971552</td></tr>
+<tr><td  rowspan=3 align=center>55</td></tr>
+<tr><td nowrap>(A) 8.808298e+21<br>  8808298119720364971552</td></tr>
+<tr><td nowrap>(B) 2.727284e+22<br>  27272844922266198818078</td></tr>
+<tr><td  rowspan=3 align=center>56</td></tr>
+<tr><td nowrap>(A) 2.727284e+22<br>  27272844922266198818078</td></tr>
+<tr><td nowrap>(B) 6.309246e+22<br>  63092460692093312467525</td></tr>
+<tr><td  rowspan=3 align=center>57</td></tr>
+<tr><td nowrap>(A) 6.309246e+22<br>  63092460692093312467525</td></tr>
+<tr><td nowrap>(B) 1.921897e+23<br>  192189781828748623023765</td></tr>
+<tr><td  rowspan=3 align=center>58</td></tr>
+<tr><td nowrap>(A) 1.921897e+23<br>  192189781828748623023765</td></tr>
+<tr><td nowrap>(B) 4.384747e+23<br>  438474769118020519475109</td></tr>
+<tr><td  rowspan=3 align=center>59</td></tr>
+<tr><td nowrap>(A) 4.384747e+23<br>  438474769118020519475109</td></tr>
+<tr><td nowrap>(B) 1.325438e+24<br>  1325438036712274130536314</td></tr>
+<tr><td  rowspan=3 align=center>60</td></tr>
+<tr><td nowrap>(A) 1.325438e+24<br>  1325438036712274130536314</td></tr>
+<tr><td nowrap>(B) 4.327322e+24<br>  4327322846731848749589802</td></tr>
+<tr><td  rowspan=3 align=center>61</td></tr>
+<tr><td nowrap>(A) 4.327322e+24<br>  4327322846731848749589802</td></tr>
+<tr><td nowrap>(B) 1.035936e+25<br>  10359365401268828714082041</td></tr>
+<tr><td  rowspan=3 align=center>62</td></tr>
+<tr><td nowrap>(A) 1.035936e+25<br>  10359365401268828714082041</td></tr>
+<tr><td nowrap>(B) 3.205324e+25<br>  32053249939776775765443011</td></tr>
+<tr><td  rowspan=3 align=center>63</td></tr>
+<tr><td nowrap>(A) 3.205324e+25<br>  32053249939776775765443011</td></tr>
+<tr><td nowrap>(B) 7.413110e+25<br>  74131102876631444255429073</td></tr>
+<tr><td  rowspan=3 align=center>64</td></tr>
+<tr><td nowrap>(A) 7.413110e+25<br>  74131102876631444255429073</td></tr>
+<tr><td nowrap>(B) 2.258584e+26<br>  225858413465652228863388831</td></tr>
+<tr><td  rowspan=3 align=center>65</td></tr>
+<tr><td nowrap>(A) 2.258584e+26<br>  225858413465652228863388831</td></tr>
+<tr><td nowrap>(B) 7.414434e+26<br>  741443489674457603855203276</td></tr>
+<tr><td  rowspan=3 align=center>66</td></tr>
+<tr><td nowrap>(A) 7.414434e+26<br>  741443489674457603855203276</td></tr>
+<tr><td nowrap>(B) 1.785481e+27<br>  1785481605637440068038872437</td></tr>
+<tr><td  rowspan=3 align=center>67</td></tr>
+<tr><td nowrap>(A) 1.785481e+27<br>  1785481605637440068038872437</td></tr>
+<tr><td nowrap>(B) 5.547417e+27<br>  5547417647649572762833925633</td></tr>
+<tr><td  rowspan=3 align=center>68</td></tr>
+<tr><td nowrap>(A) 5.547417e+27<br>  5547417647649572762833925633</td></tr>
+<tr><td nowrap>(B) 1.288945e+28<br>  12889454614422529463270057028</td></tr>
+<tr><td  rowspan=3 align=center>69</td></tr>
+<tr><td nowrap>(A) 1.288945e+28<br>  12889454614422529463270057028</td></tr>
+<tr><td nowrap>(B) 3.940290e+28<br>  39402905856990930693224661645</td></tr>
+<tr><td  rowspan=3 align=center>70</td></tr>
+<tr><td nowrap>(A) 3.940290e+28<br>  39402905856990930693224661645</td></tr>
+<tr><td nowrap>(B) 9.029703e+28<br>  90297035113874205499700937260</td></tr>
+<tr><td  rowspan=3 align=center>71</td></tr>
+<tr><td nowrap>(A) 9.029703e+28<br>  90297035113874205499700937260</td></tr>
+<tr><td nowrap>(B) 2.739285e+29<br>  273928531193931970704903203177</td></tr>
+<tr><td  rowspan=3 align=center>72</td></tr>
+<tr><td nowrap>(A) 2.739285e+29<br>  273928531193931970704903203177</td></tr>
+<tr><td nowrap>(B) 8.970902e+29<br>  897090218290757055648138279392</td></tr>
+<tr><td  rowspan=3 align=center>73</td></tr>
+<tr><td nowrap>(A) 8.970902e+29<br>  897090218290757055648138279392</td></tr>
+<tr><td nowrap>(B) 2.155926e+30<br>  2155926982649595310690032957266</td></tr>
+<tr><td  rowspan=3 align=center>74</td></tr>
+<tr><td nowrap>(A) 2.155926e+30<br>  2155926982649595310690032957266</td></tr>
+<tr><td nowrap>(B) 6.691781e+30<br>  6691781608299642589376303568996</td></tr>
+<tr><td  rowspan=3 align=center>75</td></tr>
+<tr><td nowrap>(A) 6.691781e+30<br>  6691781608299642589376303568996</td></tr>
+<tr><td nowrap>(B) 1.553735e+31<br>  15537359898820273235593329305889</td></tr>
+<tr><td  rowspan=3 align=center>76</td></tr>
+<tr><td nowrap>(A) 1.553735e+31<br>  15537359898820273235593329305889</td></tr>
+<tr><td nowrap>(B) 4.748766e+31<br>  47487662545946745540039278195088</td></tr>
+<tr><td  rowspan=3 align=center>77</td></tr>
+<tr><td nowrap>(A) 4.748766e+31<br>  47487662545946745540039278195088</td></tr>
+<tr><td nowrap>(B) 1.563163e+32<br>  156316342831104291731209027147600</td></tr>
+<tr><td  rowspan=3 align=center>78</td></tr>
+<tr><td nowrap>(A) 1.563163e+32<br>  156316342831104291731209027147600</td></tr>
+<tr><td nowrap>(B) 3.777161e+32<br>  377716106525158353653530075243889</td></tr>
+<tr><td  rowspan=3 align=center>79</td></tr>
+<tr><td nowrap>(A) 3.777161e+32<br>  377716106525158353653530075243889</td></tr>
+<tr><td nowrap>(B) 1.176811e+33<br>  1176811162775483601693782177033888</td></tr>
+<tr><td  rowspan=3 align=center>80</td></tr>
+<tr><td nowrap>(A) 1.176811e+33<br>  1176811162775483601693782177033888</td></tr>
+<tr><td nowrap>(B) 2.743802e+33<br>  2743802136233200494910736532266785</td></tr>
+<tr><td  rowspan=3 align=center>81</td></tr>
+<tr><td nowrap>(A) 2.743802e+33<br>  2743802136233200494910736532266785</td></tr>
+<tr><td nowrap>(B) 8.411057e+33<br>  8411057914587300906166815299630500</td></tr>
+<tr><td  rowspan=3 align=center>82</td></tr>
+<tr><td nowrap>(A) 8.411057e+33<br>  8411057914587300906166815299630500</td></tr>
+<tr><td nowrap>(B) 1.934152e+34<br>  19341521721191987061989767740559096</td></tr>
+<tr><td  rowspan=3 align=center>83</td></tr>
+<tr><td nowrap>(A) 1.934152e+34<br>  19341521721191987061989767740559096</td></tr>
+<tr><td nowrap>(B) 5.883624e+34<br>  58836246007671980676701305572008616</td></tr>
+<tr><td  rowspan=3 align=center>84</td></tr>
+<tr><td nowrap>(A) 5.883624e+34<br>  58836246007671980676701305572008616</td></tr>
+<tr><td nowrap>(B) 1.931384e+35<br>  193138495639418728601352254672212960</td></tr>
+<tr><td  rowspan=3 align=center>85</td></tr>
+<tr><td nowrap>(A) 1.931384e+35<br>  193138495639418728601352254672212960</td></tr>
+<tr><td nowrap>(B) 4.655344e+35<br>  465534445234582735866137203349361804</td></tr>
+<tr><td  rowspan=3 align=center>86</td></tr>
+<tr><td nowrap>(A) 4.655344e+35<br>  465534445234582735866137203349361804</td></tr>
+<tr><td nowrap>(B) 1.448445e+36<br>  1448445223155386319511317691248362495</td></tr>
+<tr><td  rowspan=3 align=center>87</td></tr>
+<tr><td nowrap>(A) 1.448445e+36<br>  1448445223155386319511317691248362495</td></tr>
+<tr><td nowrap>(B) 3.373149e+36<br>  3373149990242577453089766471684306119</td></tr>
+<tr><td  rowspan=3 align=center>88</td></tr>
+<tr><td nowrap>(A) 3.373149e+36<br>  3373149990242577453089766471684306119</td></tr>
+<tr><td nowrap>(B) 1.033425e+37<br>  10334251171116717047126250176555095698</td></tr>
+<tr><td  rowspan=3 align=center>89</td></tr>
+<tr><td nowrap>(A) 1.033425e+37<br>  10334251171116717047126250176555095698</td></tr>
+<tr><td nowrap>(B) 3.408800e+37<br>  34088001847162371052513765703648936115</td></tr>
+<tr><td  rowspan=3 align=center>90</td></tr>
+<tr><td nowrap>(A) 3.408800e+37<br>  34088001847162371052513765703648936115</td></tr>
+<tr><td nowrap>(B) 8.258315e+37<br>  82583155244433866410001965296565270848</td></tr>
+<tr><td  rowspan=3 align=center>91</td></tr>
+<tr><td nowrap>(A) 8.258315e+37<br>  82583155244433866410001965296565270848</td></tr>
+<tr><td nowrap>(B) 2.578405e+38<br>  257840525338468016226253547428075519168</td></tr>
+<tr><td  rowspan=3 align=center>92</td></tr>
+<tr><td nowrap>(A) 2.578405e+38<br>  257840525338468016226253547428075519168</td></tr>
+<tr><td nowrap>(B) 6.027569e+38<br>  602756928967309414035917333281627812370</td></tr>
+<tr><td  rowspan=3 align=center>93</td></tr>
+<tr><td nowrap>(A) 6.027569e+38<br>  602756928967309414035917333281627812370</td></tr>
+<tr><td nowrap>(B) 1.851651e+39<br>  1851651965537096155939804262166579952960</td></tr>
+<tr><td  rowspan=3 align=center>94</td></tr>
+<tr><td nowrap>(A) 1.851651e+39<br>  1851651965537096155939804262166579952960</td></tr>
+<tr><td nowrap>(B) 4.269153e+39<br>  4269153171659878439802176653650716140929</td></tr>
+<tr><td  rowspan=3 align=center>95</td></tr>
+<tr><td nowrap>(A) 4.269153e+39<br>  4269153171659878439802176653650716140929</td></tr>
+<tr><td nowrap>(B) 1.301390e+40<br>  13013909721099237630683750883559363836634</td></tr>
+<tr><td  rowspan=3 align=center>96</td></tr>
+<tr><td nowrap>(A) 1.301390e+40<br>  13013909721099237630683750883559363836634</td></tr>
+<tr><td nowrap>(B) 4.279749e+40<br>  42797498095310025920131765800438548654518</td></tr>
+<tr><td  rowspan=3 align=center>97</td></tr>
+<tr><td nowrap>(A) 4.279749e+40<br>  42797498095310025920131765800438548654518</td></tr>
+<tr><td nowrap>(B) 1.033924e+41<br>  103392496644269951853614096249825690130971</td></tr>
+<tr><td  rowspan=3 align=center>98</td></tr>
+<tr><td nowrap>(A) 1.033924e+41<br>  103392496644269951853614096249825690130971</td></tr>
+<tr><td nowrap>(B) 3.222867e+41<br>  322286740998519663906776014908396560582530</td></tr>
+<tr><td  rowspan=3 align=center>99</td></tr>
+<tr><td nowrap>(A) 3.222867e+41<br>  322286740998519663906776014908396560582530</td></tr>
+<tr><td nowrap>(B) 7.522766e+41<br>  752276648034035903600966817196471179765521</td></tr>
+<tr><td  rowspan=3 align=center>100</td></tr>
+<tr><td nowrap>(A) 7.522766e+41<br>  752276648034035903600966817196471179765521</td></tr>
+<tr><td nowrap>(B) 2.309006e+42<br>  2309006583627815515505755316801664143732646</td></tr>
+</table>
+</center>
+</body>
+</html>
