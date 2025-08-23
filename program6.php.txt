@@ -1,0 +1,328 @@
+<?php
+////////////////////////////////////////////////////////////////////////
+//    Collatz Conjecture        Program6.php                         //
+//    Find the Generator for specified Stopping Time (Glide)         //
+//                at the lower limit of the bird's-eye view          //
+///////////////////////////////////////////////////////////////////////
+function Glide_check($number){ 
+      $M="";
+      $first="Y";
+      $flag=0;
+      $zero=gmp_init(0);
+      $one=gmp_init(1);
+      $n =$zero;
+      $parity_vector="";
+
+      $N=$number;
+      $n2=$number;
+      while (1) {
+           if( gmp_cmp($n2,$one)<=0 ) { break; }  // if ( $n2 <= 1) { break; }
+            $n = $n + 1; 
+
+            if (gmp_div_r($n2,2) == 0) {  //if ($n2 % 2 == 0) {
+                $n1 = $n2;
+                $n2 = gmp_div_q($n2, 2);   //   $n2=$n2/2;
+                if ( $flag == 0 && $first=="Y" && gmp_cmp($n2,$N) < 0  ) {  
+                     $flag = 1;
+                     $M = $n ;
+                     $R = $n2 ;
+                }
+
+                if($flag == 1 && $first=="Y" ){
+                     $first="N";
+                }
+            } else {
+                $n1 = $n2;
+                $n2 = gmp_mul($n2, 3) ;  // $n2 = $n2 * 3;
+                $n2 = gmp_add($n2,1);   // $n2 = $n2 * 3 + 1;
+                $n2 = gmp_div_q($n2, 2);  // $n2 = ($n2 * 3 + 1)/2
+                if ( $flag == 0 && $first=="Y" && gmp_cmp($n2,$N) < 0 ) {  
+                     $flag = 1;
+                     $M = $n ;
+                     $R = $n2 ;
+                }
+            }
+     }
+     $out1=$M; // Glide
+     $out2="not used"; // $parity_vector;
+     return  array($out1,$out2);
+}
+/********************** Program Start ************/
+$BIT_length=$_POST['length'];
+$option=$_POST['option'];
+$Length_max=$BIT_length; 
+
+$data_path="./data";
+if(!file_exists($data_path)){
+    mkdir($data_path,0707);
+}
+$out_file=$data_path."/GeneratorLowerPVstring".$BIT_length.".html";
+$fp=fopen($out_file,"w");    // outfile open 
+
+$html_data="<!DOCTYPE HTML>\n";
+$html_data.="<html lang=\"en\">\n";
+$html_data.="<head>\n";
+$html_data.="<meta charset=\"UTF-8\">\n";
+
+$html_data.="<title>Generator List of Lower Limit PV</title>\n";
+$html_data.="</head>\n";
+$html_data.="<body>\n";
+$html_data.="<center>\n";
+$zen_d=-1;
+
+$Gd=intval($BIT_length*log10(2)/log10(3));
+$Glength=intval($Gd*log10(3)/log10(2)+1);
+if($Glength==$BIT_length) {
+  $Just="y";
+  $Length_max=$BIT_length;
+}else{
+  $Just="n";
+  $Length_max=$BIT_length+1;
+}
+
+$PATTERN="";
+for ($i=1;$i<=$Length_max;$i++){
+       $Gyo_end="n";
+       $d=intval($i*log10(2)/log10(3));
+       for($j=0;$j<=$Length_max;$j++){
+             if($j==$d){
+               if( $zen_d<>$d ){
+                    $Bit_data="0";
+                    $PATTERN.="1";
+                    $zen_d=$d;
+               } else {
+                    $Bit_data=" ";
+                    $PATTERN.="0";
+              }
+             } else {
+                if($j==($i+1)){
+                   $Gyo_end="y";
+                }else {
+                   $Bit_data=" ";
+               }
+            } 
+            if($Gyo_end=="y"){
+                break;
+            }
+      }
+}
+
+// Output Record
+
+$BIT_PATTERN=$PATTERN;
+if ($Just=="y"){
+      $LAST_BIT_PATTERN=substr($BIT_PATTERN,0,$BIT_length-1)."0";
+} else {
+      $LAST_BIT_PATTERN=$BIT_PATTERN."0";
+}
+$LAST_BIT_length=strlen($LAST_BIT_PATTERN);
+
+$out_html="<!DOCTYPE HTML>\n";
+$out_html.="<html lang=\"en\">\n";
+$out_html.="<head>\n";
+$out_html.="<meta charset=\"UTF-8\">\n";
+$out_html.="<title>Generator List of Lower Limit PV</title>\n";
+$out_html.="</head>\n";
+$out_html.="<body>\n";
+$out_html.="<center>\n";
+if( $option=="no"){
+    $out_html.="<h3>Generator List of Just Converged PV obtained from Lower Limit PV</h3>\n";
+    $html_data.="<h3>Generator List of Just Converged PV obtained from Lower Limit PV</h3>\n";
+} else {
+    $out_html.="<h3>The Generator for specified Stopping Time (Glide)</h3>\n";
+    $html_data.="<h3>The Generator for specified Stopping Time (Glide)</h3>\n";
+}
+$out_html.="<table border=1>\n";
+$html_data.="<table border=1>\n";
+$out_html.="<tr><td colspan=5 nowrap align=left>Input stopping time = ".$BIT_length."</td></tr>\n";
+$html_data.="<tr><td colspan=5 nowrap align=left>Input stopping time = ".$BIT_length."</td></tr>\n";
+
+$PV_length=$BIT_length;
+
+if($PV_length <= 100) {
+     $out_html.="<tr><td align=left> PV_LowerLimit= </td><td colspan=4 nowrap align=left> ".$BIT_PATTERN."</td></tr>\n"; 
+     $html_data.="<tr><td align=left> PV_LowerLimit= </td><td colspan=4 nowrap align=left> ".$BIT_PATTERN."</td></tr>\n"; 
+
+} else {
+    $PV_LowerLimit="";
+    $loop_kaisu=(int)($PV_length*1.0/100.0 + 1);
+    if( $option=="no"){
+           $PV_LowerLimit="<tr><td align=left> PV_LowerLimit= </td><td colspan=4 nowrap align=left><br>";
+    } else {
+           $PV_LowerLimit="<tr><td align=left> PV_LowerLimit= </td><td colspan=4 nowrap align=left>";
+    }
+    for  ($jj=1; $jj<=$loop_kaisu ; $jj++ ){
+        if($jj==1){ 
+                 $PV_LowerLimit.=substr($BIT_PATTERN,($jj-1)*100,100);
+        } else {
+                 $PV_LowerLimit.="<br>".substr($BIT_PATTERN,($jj-1)*100,100);
+        }
+   }
+   $out_html.=$PV_LowerLimit."</td></tr>\n";
+   $html_data.=$PV_LowerLimit."</td></tr>\n";
+}
+if ($Just=="y"){
+    $Target_PV=$LAST_BIT_PATTERN;
+    $Target_length=strlen($Target_PV);
+    $Target_PV="";
+    $loop_kaisu=(int)($Target_length*1.0/100.0 + 1);
+    if( $option=="no"){
+           $Target_PV="<tr><td align=left> Target_PV= </td><td colspan=4 nowrap align=left>";
+    } else {
+           $Target_PV="<tr><td align=left> Target_PV= </td><td colspan=4 nowrap align=left>";
+    }
+    for  ($jj=1; $jj<=$loop_kaisu ; $jj++ ){
+        if($jj==1){ 
+              $Target_PV.=substr($LAST_BIT_PATTERN,($jj-1)*100,100);
+        } else {
+              $Target_PV.="<br>".substr($LAST_BIT_PATTERN,($jj-1)*100,100);
+        }
+   }
+   $out_html.=$Target_PV."</td></tr>\n";
+   $html_data.=$Target_PV."</td></tr>\n";
+}else{
+    $out_html.="<tr><td align=left> Target PV = </td><td colspan=4 nowrap align=left> Not</td></tr>\n";
+    $html_data.="<tr><td align=left> Target PV = </td><td colspan=4 align=left> Not</td></tr>\n";
+}
+
+$end=$BIT_length;
+
+if( $option=="no"){
+    $out_html.="<tr><th align=center>Lengths from <br>the beginning of PV</th><th align=center>Number of Ones</th><th align=left> Generator </th><th  align=left> Stopping Time<br> (Glide)</th><th align=center>mod 32</th></tr>\n";
+    $html_data.="<tr><th align=center>Lengths from <br>the beginning of PV</th><th align=center>Number of Ones</th><th align=left> Generator </th><th  align=left> Stopping Time<br> (Glide)</th><th align=center>mod 32</th></tr>\n";
+} else {
+    $out_html.="<tr><th align=center>Lengths of PV</th><th align=center>Number of Ones</th><th align=left> Generator </th><th  align=left> Stopping Timee<br> (Glide)</th><th align=center>mod 32</th></tr>\n";
+    $html_data.="<tr><th align=center>Lengths of PV</th><th align=center>Number of Ones</th><th align=left> Generator </th><th  align=left> Stopping Time<br> (Glide)</th><th align=center>mod 32</th></tr>\n";
+
+}
+
+fputs($fp,$out_html);      //  output data
+//////////////////////////////////////////////////////
+$BIT_PATTERN=$LAST_BIT_PATTERN;
+$BIT_length=strlen($BIT_PATTERN);
+/////////////////////////////////////////////////////
+$zero=gmp_init(0);
+$one=gmp_init(1);
+$one_minus=gmp_init(-1);
+$two=gmp_init(2);
+/***********New Value*****************************/
+if (substr($BIT_PATTERN,0,1)==1 ){
+    $pre_Ratio=$zero;
+    $pre_Length=1;
+    $pre_Pattern="1";
+    $pre_Ones=1;
+    $pre_Generator=1;
+    $pre_zen_Resultant=1;
+    $pre_Resultant=2;
+    $pre_OddEven=0;  // even
+    $pre_Glide=2;
+    $pre_Power_of_2=gmp_pow(2,$pre_Length);
+    /**********************************************/
+    $gen_Ratio=$zero;
+    $gen_Length=1;
+    $gen_Pattern="";
+    $gen_Ones=1;
+    $gen_Generator=1;
+    $gen_zen_Resultant=1;
+    $gen_Resultant=2;
+    $gen_OddEven=0;  // even
+    $gen_Glide=$zero;
+    $gen_Power_of_2=$zero;
+}else {
+//////// first bit = 0
+    $pre_Ratio=$zero;
+    $pre_Length=1;
+    $pre_Pattern="0";
+    $pre_Ones=0;
+    $pre_Generator=2;
+    $pre_zen_Resultant=1;
+    $pre_Resultant=1;
+    $pre_OddEven=1;  // odd
+    $pre_Glide=1;
+    $pre_Power_of_2=gmp_pow(2,$pre_Length);
+    $gen_Ratio=$zero;
+    $gen_Length=1;
+    $gen_Pattern="";
+    $gen_Ones=0;
+    $gen_Generator=2;
+    $gen_zen_Resultant=1;
+    $gen_Resultant=1;
+    $gen_OddEven=1;  // odd
+    $gen_Glide=$zero;
+    $gen_Power_of_2=$zero;
+}
+
+$out_html="";
+if($option=="no"){
+     $out_html="<tr><td align=center>&nbsp; 1 </td><td align=center>&nbsp; 1 </td><td align=left>&nbsp; 1 </td><td>&nbsp; - </td><td>&nbsp; 1 </td></tr>\n";
+fputs($fp,$out_html);
+     $html_data.="<tr><td align=center>&nbsp; 1 </td><td align=center>&nbsp; 1 </td><td align=left>&nbsp; 1 </td><td>&nbsp; - </td><td>&nbsp; 1 </td></tr>\n";
+ 
+}
+
+for ($ii=2; $ii<=$end ; $ii++ ){
+   $gen_Length=$ii;
+   $gen_Pattern=substr($BIT_PATTERN,0,$ii);
+   $gen_Ones=mb_substr_count($gen_Pattern,"1");
+   if(substr($gen_Pattern,$ii-1,1) == $pre_OddEven) {
+        $gen_Generator=$pre_Generator;
+        $gen_zen_Resultant=$pre_Resultant;
+        if (gmp_mod($gen_zen_Resultant,$two)==1){
+            $gen_Resultant=gmp_mul(gmp_init(3),$gen_zen_Resultant);
+            $gen_Resultant=gmp_add($gen_Resultant,$one);
+            $gen_Resultant=gmp_div_q($gen_Resultant,$two);
+        } else{
+            $gen_Resultant=gmp_div_q($gen_zen_Resultant,$two);
+        }
+        $gen_Glide=$pre_Glide;
+   } else {
+        $gen_Generator=gmp_add($pre_Generator,$pre_Power_of_2);
+        $Glide_number=Glide_check($gen_Generator);
+        $gen_Glide=$Glide_number[0];
+        $ws_ones=gmp_pow(3,$pre_Ones);
+        $gen_zen_Resultant=gmp_add($pre_Resultant,$ws_ones);
+        if (gmp_mod($gen_zen_Resultant,$two)==1){
+            $gen_Resultant=gmp_mul(gmp_init(3),$gen_zen_Resultant);
+            $gen_Resultant=gmp_add($gen_Resultant,$one);
+            $gen_Resultant=gmp_div_q($gen_Resultant,$two);
+        } else{
+            $gen_Resultant=gmp_div_q($gen_zen_Resultant,$two);
+        }
+   }
+   $gen_OddEven=gmp_mod($gen_Resultant,$two);
+   $gen_Power_of_2=gmp_mul($pre_Power_of_2,$two);
+   $gen_module=gmp_div_r($gen_Generator,32);  //  $n/32+r
+
+   if($Just=="y" && $ii==$end) {
+       $out_html.="<tr><td align=center>&nbsp; <font color=red><b>".$gen_Length."</b></font></td><td align=center>&nbsp; ".$gen_Ones."</td><td align=left>&nbsp; ".$gen_Generator."</td><td align=left>&nbsp; <font color=red><b>".$gen_Glide."</b></font></td><td align=left>&nbsp; ".$gen_module."</td></tr>\n";
+       $html_data.="<tr><td align=center>&nbsp; <font color=red><b>".$gen_Length."</b></font></td><td align=center>&nbsp; ".$gen_Ones."</td><td align=left>&nbsp; ".$gen_Generator."</td><td align=left>&nbsp; <font color=red><b>".$gen_Glide."</b></font></td><td align=left>&nbsp; ".$gen_module."</td></tr>\n";
+   }else {
+       if ( $option == "yes" && ($ii==$end-1 || $ii==$end) ){ 
+          $out_html.="<tr><td align=center>&nbsp; ".$gen_Length."</td><td align=center>&nbsp; ".$gen_Ones."</td><td align=left>&nbsp; ".$gen_Generator."</td><td a lign=left>&nbsp; ".$gen_Glide."</td><td align=left>&nbsp; ".$gen_module."</td></tr>\n";
+          $html_data.="<tr><td align=center>&nbsp; ".$gen_Length."</td><td align=center>&nbsp; ".$gen_Ones."</td><td align=left>&nbsp; ".$gen_Generator."</td><td align=left>&nbsp; ".$gen_Glide."</td><td align=left>&nbsp; ".$gen_module."</td></tr>\n";
+       } else {
+          if ($option == "no"){
+              $out_html.="<tr><td align=center>&nbsp; ".$gen_Length."</td><td align=center>&nbsp; ".$gen_Ones."</td><td align=left>&nbsp; ".$gen_Generator."</td><td a lign=left>&nbsp; ".$gen_Glide."</td><td align=left>&nbsp; ".$gen_module."</td></tr>\n";
+              $html_data.="<tr><td align=center>&nbsp; ".$gen_Length."</td><td align=center>&nbsp; ".$gen_Ones."</td><td align=left>&nbsp; ".$gen_Generator."</td><td align=left>&nbsp; ".$gen_Glide."</td><td align=left>&nbsp; ".$gen_module."</td></tr>\n";
+          }
+       }
+   }
+   fputs($fp,$out_html);
+   $pre_Ratio=$zero;
+   $pre_Length=$gen_Length;
+   $pre_Pattern=$gen_Pattern;
+   $pre_Ones=$gen_Ones;
+   $pre_Generator=$gen_Generator;
+   $pre_zen_Resultant=$gen_zen_Resultant;
+   $pre_Resultant=$gen_Resultant;
+   $pre_OddEven=$gen_OddEven;
+   $pre_Glide=$gen_Glide;
+   $pre_Power_of_2=$gen_Power_of_2;
+}
+/*********************************************/
+$out_html="</table></body></html>\n";
+fputs($fp,$out_html);
+fclose($fp);
+$html_data.="</table></body></html>\n";
+print($html_data);
+?>
