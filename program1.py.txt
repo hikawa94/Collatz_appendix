@@ -1,0 +1,192 @@
+#!python.exe
+# -*- coding: UTF-8 -*-
+import cgi
+import cgitb
+import urllib.parse
+import os
+import sys
+import time
+from mpmath import mp
+########################################################################
+##    Program1.py                                                     ##
+########################################################################
+def get_message():
+    input_message = input()
+    input_message = urllib.parse.unquote(input_message)
+    parse_message = urllib.parse.parse_qs(input_message)
+    return parse_message["txtN1"][0],parse_message["gamen"][0],parse_message["ffout"][0]
+
+if __name__ == '__main__':
+    cgitb.enable()
+    mp.dps = 200
+    mess = get_message()
+    txtN1 = mess[0]   # form.getvalue( 'txtN1', '' ) 
+    gamen = mess[1]   # form.getvalue( 'gamen', '' )
+    ffout=  mess[2]   # form.getvalue( 'ffout', '' )
+    if(txtN1 ==  "0"):
+       print("Content-type: text/html; charset=UTF-8")
+       print()
+       html_data="<!DOCTYPE HTML>\n"
+       html_data+="<html lang=\"en\">\n"
+       html_data+="<head>\n"
+       html_data+="<meta charset=\"UTF-8\">\n"
+       html_data+="<title>Input data error</title>\n"
+       html_data+="</head>\n"
+       html_data+="<body>\n"
+       html_data+="<center>\n"
+       html_data+="<p ><font color=red>Input data error</font></p>\n"
+       html_data+="No integer data greater than or equal to 2 has been entered. <br>Use your browser's return button to enter it.<br>\n"
+       html_data+="</center>\n"
+       html_data+="</body>\n"
+       html_data+="</html>\n"
+       print(html_data)
+       sys.exit()
+
+    print("Content-type: text/html; charset=UTF-8")
+    print()
+    html_data="<!DOCTYPE HTML>\n"
+    html_data+="<html lang=\"en\">\n"
+    html_data+="<head>\n"
+    html_data+="<meta charset=\"UTF-8\">\n"
+    html_data+="<title>Collatz sequence of integer "+str(txtN1)+"</title>\n"
+    html_data+="</head>\n"
+    html_data+="<body>\n"
+    n1 = int(txtN1)
+    n2 = n1
+    N=  n1
+    html_data+="<table border=0 >\n"
+    html_data+="<tr>\n"
+    html_data+="<td align=left nowrap colspan=4>\n"
+    html_data+="<font color=red>Input number= "+str(n1)+"</font><br>\n"
+    html_data+="-----------------------------------------------------------------<br>\n"
+    html_data+="</td>\n"
+    html_data+="</tr>\n"
+    html_data+="</table>\n"
+    html_data+="<center>\n"
+    html_data+="<table border=0 width=100%>\n"
+    print(html_data)
+   
+    first="Y"
+    flag=0
+    n =0
+    parity_vector=""
+    ########################################################
+   
+    if( ffout == "Yes" ) :
+        data_path="./data"
+        if(not os.path.isdir(data_path)):
+           os.mkdir(data_path) 
+       
+        mojiretu=str(n1)
+        mojisu=len(mojiretu)
+        if(mojisu>=200):
+           mojiretu=mojiretu[0,199]
+       
+        fname=data_path+"/Collatz-"+mojiretu+".csv"
+        fp=open(fname,"w")
+        output="Collatz-"+str(n1)+" Collatz process\n"
+        fp.write(output)
+       
+    ###################################################
+    timeStart =  time.time()
+    ###################################################
+    html_data_add=""
+    while True :
+        if( n2 <= 1 ) :
+            break
+        else:
+            pass
+        n=n+1
+        if ( (n2 % 2) == 0): 
+            n1 = n2
+            n2 = n2 // 2
+            module=n2 % 32
+            parity_vector=parity_vector+"0";
+            if ( flag == 0 and first=="Y" and (n2 < N)  ):
+                 flag = 1
+                 M = n 
+                 R = n2 
+            if(flag == 1 and first=="Y" ):
+                 html_data_add+="<tr>\n"
+                 html_data_add+="<td nowrap>"+str(n1)+" / 2 </td><td>=</td><td align=left nowrap>"+str(n2)+"</td><td nowrap align=left >　<　"+str(N)+"　<font color=red><--- "+str(M)+" times</font></td>\n"
+                 html_data_add+="</tr>\n"
+                 if( ffout == "Yes" ):
+                     output=str(n1)+" / 2 = "+str(n2)+" < "+str(N)+"  <--- "+str(M)+"times\n"
+                     fp.write(output)
+                 first="N"
+            else:
+                 if( gamen == "Yes" ) :
+                      html_data_add+="<tr>\n"
+                      html_data_add+= "<td nowrap>"+str(n1)+" / 2 </td><td>=</td><td  align=left nowrap>"+str(n2)+"</td><td  align=left nowrap> </td>\n"
+                      html_data_add+="</tr>\n"
+                      if( ffout == "Yes" ):
+                           output=str(n1)+" / 2 = "+str(n2)+"\n"   
+                           fp.write(output)
+        else:
+                n1 = n2
+                n2 = n2 * 3   ## n2 = n2 * 3
+                n2 = n2 + 1   ## n2 = n2 * 3 + 1
+                n2 = n2 // 2  ## n2 = (n2 * 3 + 1)/2
+                parity_vector=parity_vector+"1"
+                module=n2 % 32  ##  n/32+r
+                if ( flag == 0 and first=="Y" and (n2<N)):
+                    flag = 1
+                    M = n 
+                    R = n2 
+                if(flag == 1 and first=="Y" ):
+                    html_data_add+="<tr>\n"
+                    html_data_add+="<td nowrap>("+str(n1)+" * 3 + 1)/2</td><td>=</td><td  align=left nowrap>"+str(n2)+"</td><td nowrap align=left>　<　"+str(N)+"　<font color=red><--- "+str(M)+" times</font></td>\n"
+                    html_data_add+="</td>\n" 
+                    html_data_add+="</tr>\n"
+                    if( ffout == "Yes" ):
+                        output="("+str(n1)+" * 3 + 1)/2 = "+str(n2)+" < "+str(N)+" <--- "+str(M)+" times\n"
+                
+                    fp.write(output)
+                    first="N"
+                else:
+                    if( gamen == "Yes" ) :
+                        html_data_add+="<tr>\n"
+                        html_data_add+="<td nowrap>("+str(n1)+" * 3 + 1)/2</td><td>=</td><td  align=left nowrap>"+str(n2)+"</td><td> </td>\n"
+                        html_data_add+="</tr>\n"
+                    if( ffout == "Yes" ):
+                        output="("+str(n1)+" * 3 + 1)/2 = "+str(n2)+"\n"
+                        fp.write(output)
+    ################################################
+    timeEnd =   time.time()
+    ### Execute time ###
+    syori_jikan=timeEnd-timeStart   ##seconds
+    ################################################
+    parity_vector_moji=parity_vector[0:M]
+    html_data_add+="<tr>\n"
+    html_data_add+="<td colspan=4 align=left>\n" 
+    html_data_add+="-----------------------------------------------------------------</td>\n" 
+    html_data_add+="</tr>\n"
+    html_data_add+="<tr>\n"
+    html_data_add+="<td colspan=4 align=left>\n" 
+    html_data_add+="<font color=red>Glide("+ str(txtN1)+")=" + str(M)+"</font><br>\n"
+    html_data_add+="</td>\n" 
+    html_data_add+="</tr>\n"
+
+    html_data_add+="<tr>\n"
+    html_data_add+="<td colspan=4 align=left>\n" 
+    html_data_add+="<font color=red>Parity vector of Glide confirmation=("+parity_vector_moji+")</font><br>\n"
+    html_data_add+="</td>\n" 
+    html_data_add+="</tr>\n"
+
+    html_data_add+="<tr>\n"
+    html_data_add+="<td colspan=4 align=left>\n" 
+    html_data_add+="<font color=red>Number of times reached to 1= "+ str(n) + " times</font><br>\n"
+    html_data_add+="</td>\n" 
+    html_data_add+="</tr>\n"
+    html_data_add+="</table>\n"
+    html_data_add+="</center>\n"
+    if( ffout == "Yes" ):
+        output="Number of times reached to 1= " +str(n)+" times\n"
+        output+="Glide("+str(txtN1)+")="+str(M)+"\n"
+        output+="Parity vector of Glide confirmation = ("+parity_vector_moji+")\n" 
+        output="Number of times reached to 1= "+str(n)+" times\n"
+        fp.write(output)
+        fp.close()
+    html_data_add+="</body>\n"
+    html_data_add+="</html>\n"
+    print(html_data_add)
