@@ -1,0 +1,34 @@
+<!--//    Collatz Conjecture        Jprogram4.html                //-->
+<!--//    PV俯瞰図の上限PVを利用した指定したGlid数のPV調査    //-->
+<!DOCTYPE HTML>
+
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>指定したstopping time(Glide)を持つ整数(Generator)を求める </title>
+</head>
+<body>
+<center>
+<h3> 俯瞰図の<font color=red>上限のPV</font>を利用して指定したstopping time(Glide)を持つ整数(Generator)を求める</h3>
+<table border=0>
+<tr>
+<td>
+求めたい Stopping Time (Glide)の最大値を入力してください。 <br>指定した最大値のStopping Timeまでの対応するGeneratorが表示されます。<BR>
+<form action="Jprogram4.php" method="post">
+<input type="text" name="length"  size="10" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+
+最後のStopping TimeとそのGeneratorだけを表示させるときは "Yes" を選択してください。<br>
+<input type="radio" name="option" value="yes"> Yes
+  <input type="radio" name="option" checked value="no"> No
+</td></tr>
+<tr><td><input type="submit" value="実行">
+</form>
+</td>
+</tr>
+<tr><td><font size=+1 color=red>(Note) 指定したStopping timeが大きすぎるときは、サーバがタイムアウトのメッセージを表示することがあります。</font></td></tr>
+</table>
+</center>
+</body>
+</html>
+

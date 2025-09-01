@@ -1,0 +1,35 @@
+<!----------   コラッツ予想　 Jprogram1.html         ---------->
+<!---------  １～16桁の任意の自然数のコラッツ操作結果---------->
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>コラッツ（Collatz）予想の計算例</title>
+
+</head>
+<body>
+<center>
+<h2>整数NのCollatz数列の計算</h2>
+<table border=0>
+<tr>
+<td>コラッツ（Collatz）の予想とは、任意の正の整数（自然数）が「偶数なら２で割り、奇数なら３倍して１を足す」という操作を繰り返すと最終的には１になる、というものです。<br>ここでは、(1)自然数を入力する<br>(2)「偶数なら２で割り、奇数なら３倍して１を足し（必ず偶数となる）、その結果を２で割る」という操作を繰り返す<br>(3)１になったら終了する<br>
+結果は、毎回のコラッツ（Collatz）操作後の数値と、<br><font color=red>初めて元の数より小さくなった時の表示（操作回数）</font><br>および最終行に<font color=blue>１に収束するまでの操作回数、Glide値、Parity Vector </font>を表示します。<br><br>
+</td>
+</tr>
+<tr>
+<td>
+任意の自然数（半角数字任意桁）を入力してください。
+<form action="Jprogram1.php" method="post">
+<input type="text" name="txtN1"  size="150" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+</td></tr>
+<tr><td>結果のみ表示: <input type="radio" name="gamen"  value="Yes"> はい　　　 <input type="radio" name="gamen" checked value="No">いいえ</td></tr>
+<input type="hidden" name="ffout" value="No">
+<tr><td><input type="submit" value="実行する">
+</form>
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>
+

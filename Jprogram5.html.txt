@@ -1,0 +1,35 @@
+<!----------   //    Jprogram5.html ----->  
+<!------PV俯瞰図の下限のPVを生成する ---->
+<!DOCTYPE HTML>
+<head>
+<meta charset="UTF-8">
+<title>PV俯瞰図の下限のPVから任意の段数離れたPVを生成する</title>
+
+</head>
+<body>
+<center>
+<h2>PV俯瞰図の下限のPVから任意の段数離れたPVを生成する</h2>
+<table border=0>
+<tr>
+<td>
+下記の2つの項目を入力してください。 <br>(1) 下限から離れた段数のPVを求めたいとき、その段数 (下限のPVの段数は1とする) と<br>
+(2) 求めるPVの長さ<br>
+ <br>
+サーバの制約により、段数の最大値は3000とする。 <br>
+<form action="Jprogram5.php" method="post">
+(1) <input type="text" name="step"  size="10" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+(2) <input type="text" name="length"  size="10" oninput="value = value.replace(/[^0-9]+/i,'');" /><br>
+詳細なデータが不要の場合は、Detail=Noとしてください。 <br>
+Detail:<input type="radio" name="detail"  value="Yes" checked>Yes   <input type="radio" name="detail"  value="No">No
+</td></tr>
+<br>
+</td></tr>
+<tr><td><input type="submit" value="実行">
+</form>
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>
+
