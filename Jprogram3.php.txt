@@ -1,0 +1,201 @@
+<?php
+header("Content-Type: text/html; charset=UTF-8");
+/////////////////////////////////////////////////////////////////////////
+//    コラッツ予想　                                                   //
+//   N　入力   Jprogram3.php                   　　　　　　　　　　　　//
+/////////////////////////////////////////////////////////////////////////
+
+function Glide_check($number){ 
+      $M="";
+      $first="Y";
+      $flag=0;
+      $zero=gmp_init(0);
+      $one=gmp_init(1);
+      $n =$zero;
+      $parity_vector="";
+
+      $N=$number;
+      $n2=$number;
+  while (1) {
+     if( gmp_cmp($n2,$one)<=0 ) { break; }  // if ( $n2 <= 1) { break; }
+        $n = $n + 1; 
+
+        if (gmp_div_r($n2,2) == 0) {  //if ($n2 % 2 == 0) {
+            $n1 = $n2;
+            $n2 = gmp_div_q($n2, 2);   //   $n2=$n2/2;
+            $parity_vector=$parity_vector."0";
+            if ( $flag == 0 && $first=="Y" && gmp_cmp($n2,$N) < 0  ) {  
+                 $flag = 1;
+                 $M = $n ;
+                 $R = $n2 ;
+            }
+
+            if($flag == 1 && $first=="Y" ){
+                 $first="N";
+            }
+        } else {
+            $n1 = $n2;
+            $n2 = gmp_mul($n2, 3) ;  // $n2 = $n2 * 3;
+            $n2 = gmp_add($n2,1);   // $n2 = $n2 * 3 + 1;
+            $n2 = gmp_div_q($n2, 2);  // $n2 = ($n2 * 3 + 1)/2
+            $parity_vector=$parity_vector."1";
+
+           if ( $flag == 0 && $first=="Y" && gmp_cmp($n2,$N) < 0 ) {  
+                 $flag = 1;
+                 $M = $n ;
+                 $R = $n2 ;
+            }
+        }
+    }
+    $out1=$M; // Glide
+    $out2=$n;  // total stopping time
+    $out3=$parity_vector;
+
+    return  array($out1,$out2,$out3);
+
+}
+
+$zero=gmp_init(0);
+$one_minus=gmp_init(-1);
+$one=gmp_init(1);
+
+$number=$zero;
+$number=$_POST['number'];
+$Glide_number=Glide_check($number);
+$Glide_No=$Glide_number[0];
+$Reach1=$Glide_number[1];
+$Glide_Parity=$Glide_number[2];   //parity_vector;
+$Message="状況：Glide= ".$Glide_No.", １に到達するまでの回数 = ".$Reach1."  (<a href=\"javascript:void(0);\" onclick=\"openWin()\">この俯瞰図の説明</a>)";
+
+$PATTERN=$Glide_Parity;
+
+$BIT_PATTERN=strval($PATTERN);
+$BIT_length=strlen($BIT_PATTERN);
+$BIT_odd=mb_substr_count($BIT_PATTERN,"1");
+$Table_max=$BIT_length+30;  // table size
+$K_table=array();
+$Bit_table=array();
+//$Pat_table=array();
+$Pat_table=[];
+$Pat_table[0]=" ";
+
+$html_data="<!DOCTYPE HTML>\n";
+$html_data.="<html lang=\"ja\">\n";
+$html_data.="<head>\n";
+$html_data.="<meta charset=\"UTF-8\">\n";
+
+$html_data.="<title>整数によるParity Vector俯瞰図</title>\n";
+// 実行される関数
+$html_data.="<script language=\"JavaScript\" type=\"text/javascript\">";
+$html_data.="function openWin(){;";
+$html_data.="  newWin = window.open('JViewOfBird.html','ViewOfBird','width=400,height=300,  scrollbars=no,status=no,toolbar=no,location=no,menubar=no,resizable=yes');";
+$html_data.="   newWin.focus();";
+$html_data.=" }";
+$html_data.="</script>";
+$html_data.="</head>\n";
+$html_data.="<body>\n";
+$html_data.="<font color=red><b>整数入力によるParity Vector(PV)の俯瞰図</b></font><br>\n";
+$html_data.="正の整数(>1)を入力し実行ボタンをクリックしてください。<br>";
+$html_data.="<form action=\"Jprogram3.php\" method=\"post\"><input type=\"text\" name=\"number\" value=\"".$number."\" size=\"100\" oninput=\"value = value.replace(/[^0-9]+/i,'');\"/>   <input type=\"submit\" value=\"Execute\"></form>\n";
+//////////////////////////////////////
+$html_data.=$Message."\n";
+/////////////////////////////////////   
+$html_data.="<table border=1 >\n";
+$html_data.="<tr bgcolor=orange>";
+$html_data.="<th bgcolor=white><font size=-1>PV →</font>".$Pat_table[0]."</th>";
+for($i=0;$i<=$BIT_length-1;$i++){
+   $Pat_table[$i+1]=substr($BIT_PATTERN,$i,1);
+   $html_data.="<th>".$Pat_table[$i+1]."</th>";
+}
+$html_data.="</tr>";
+$zen_d=-1;
+for ($i=0;$i<=$Table_max;$i++){
+   $Gyo_end="n";
+   if($i==0){
+      $html_data.="<tr>";    ////////
+      $K_table[$i]="k　 d";
+      $html_data.="<th align=center nowrap>".$K_table[$i]."</th>";
+      for ($j=0;$j<=$Table_max;$j++){
+          $Bit_table[$i][$j]=$j;
+          $html_data.="<th align=center nowrap>　".$Bit_table[$i][$j]."</th>";
+      }
+      $html_data.="</tr>";
+   } else {
+       $K_table[$i]=$i;
+       $d=intval($i*log10(2)/log10(3));
+       for($j=0;$j<=$Table_max;$j++){
+             if($j==$d){
+               if( $zen_d<>$d ){
+                    $Bit_table[$i][$j]="0";
+                    $zen_d=$d;
+               } else {
+                    $Bit_table[$i][$j]=" ";
+              }
+             } else {
+                if($j==($i+1)){
+                   $Bit_table[$i][$j]="＊"; /////////////////
+                   $Gyo_end="y";
+                }else {
+                   $Bit_table[$i][$j]=" ";
+               }
+            } 
+            if($Gyo_end=="y"){
+                break;
+            }
+      } ///////    for end
+   }
+}
+$Pos_i=1;
+$Pos_j=0;
+$Pos_bit=0;
+for($i=0;$i<=$BIT_length-1;$i++){
+   $Pos_i=$i+1;
+   $BIT=$Pat_table[$i+1];
+   if($Bit_table[$i][$i]=="＊") { continue;}
+   if($BIT=="0"){
+      $Bit_table[$Pos_i][$Pos_j]="<font color=red><b>０</b></font>";
+   }else{
+      $Bit_table[$Pos_i][$Pos_j+1]="<font color=red><b>１</b></font>";
+      $Pos_j++;
+   }
+}
+/************************************
+       $d=intval($i*log10(2)/log10(3));
+       for($j=0;$j<=$Table_max;$j++){
+             if($j==$d){
+                $Bit_table[$i][$j]="0";
+******************************************/
+$zen_d=-1;
+for($i=1;$i<=$Table_max;$i++){
+     $html_data.="<tr>";
+     $K_table[$i]=$i;
+     $html_data.="<th align=center>".$K_table[$i]."</th>";
+     if($i >= 1){
+         $d=intval($i*log10(2)/log10(3));
+     }
+     for($j=0;$j<=$Table_max;$j++){
+       if($j==$d){
+           if($zen_d<>$d){ 
+               $html_data.="<td align=center bgcolor=yellow>".$Bit_table[$i][$j]."</td>";
+               $zen_d=$d;
+           } else { 
+               $html_data.="<td align=center>".$Bit_table[$i][$j]."</td>";
+           } 
+       }else {
+         $html_data.="<td align=center>".$Bit_table[$i][$j]."</td>";
+       } 
+       if($Bit_table[$i][$j]=="＊") { 
+          break;
+       }
+    }
+    $html_data.="</tr>";
+}
+$html_data.="</table>\n";
+
+$html_data.="</center>\n";
+$html_data.="</body>\n";
+$html_data.="</html>\n";
+print($html_data);
+
+?>
+
