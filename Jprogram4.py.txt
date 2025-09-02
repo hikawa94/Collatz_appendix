@@ -1,0 +1,163 @@
+#!python.exe
+# -*- coding: UTF-8 -*-
+import urllib.parse
+import sys, io 
+import os
+import datetime
+import math
+from mpmath import mp
+########################################################################
+##    Collatz Conjecture        Jprogram4.py                          ##
+##   俯瞰図の上限のPVを利用して指定した                               ##
+##     stopping time(Glide)を持つ整数(Generator)を求める              ##
+########################################################################
+def get_message():
+##   try:
+      input_message = input()
+      input_message = urllib.parse.unquote(input_message)
+      parse_message = urllib.parse.parse_qs(input_message)
+      return parse_message["length"][0],parse_message["option"][0],parse_message["dummy"][0]
+
+def Glide_check(number):
+      M=""
+      first="Y"
+      flag=0
+      zero=0
+      one=1
+      n =zero
+      parity_vector=""
+      N=number
+      n2=number
+      while True:
+          if n2 <= 1 :
+              break    ## if ( $n2 <= 1) { break }
+          n = n + 1 
+          if  (n2 % 2) == 0:   ##if (n2 % 2 == 0)
+              n1 = n2
+              n2 = n2//2   ##   n2=n2/2
+              parity_vector=parity_vector+"0"
+              if ( flag == 0) and ( first=="Y") and (n2<N):
+                   flag = 1
+                   M = n 
+                   R = n2 
+                   break
+              if (flag == 1) and ( first=="Y" ):
+                   first="N"
+          else:
+              n1 = n2
+              n2 = n2* 3   ## n2 = n2 * 3
+              n2 = n2+1    ## n2 = n2 * 3 + 1
+              n2 = n2//2   ## n2 = (n2 * 3 + 1)/2
+              parity_vector=parity_vector+"1"
+
+              if (flag == 0 and  first=="Y" and n2 < N ):
+                   flag = 1
+                   M = n 
+                   R = n2 
+              if (flag == 1) and ( first=="Y" ):
+                  first="N"
+      out1=M    ## Glide
+      out2=parity_vector    ## parity_vector
+      out3="not used"
+      return  out1,out2,out3
+
+###############  function Upper_gen  ###############
+def Upper_gen(inPV_k,inNum_d): 
+    PV_k=inPV_k
+    Num_d=inNum_d
+
+    Start_n=0
+    Result_n=0
+    end=inPV_k-inNum_d  ## num. of 0 
+
+    zero=0
+    one=1
+    one_minus=-1
+    two=2
+############### New Value ###############
+    parity_vector=""
+    for kk in range(1,Num_d):
+        parity_vector+="1"
+    gen_generator=2**Num_d
+    gen_generator=gen_generator-one
+    if gen_generator > 1:
+        for ii  in range(1,end):
+              Glide_number=Glide_check(gen_generator)
+              gen_Glide=Glide_number[0]
+              gen_parity_vector=Glide_number[1]
+              if gen_parity_vector[Num_d+ii-1] != "0":
+                  WS=2**(Num_d+ii-1)
+    out1=gen_generator
+    out2="not used"
+    return  out1,out2
+
+if __name__ == '__main__':
+   mp.dps = 200
+
+
+############### Program Start ###############
+mess = get_message()
+BIT_length=int(mess[0])
+option= mess[1]
+
+print("Content-type: text/html; charset=UTF-8")
+print()
+html_data="<!DOCTYPE HTML>\n"
+html_data+="<html lang=\"ja\">\n"
+html_data+="<head>\n"
+html_data+="<meta charset=\"UTF-8\">\n"
+html_data+="<title>俯瞰図の上限のPVを利用して指定したstopping time(Glide)を持つ整数(Generator)を求める</title>\n"
+html_data+="</head>\n"
+html_data+="<body>\n"
+html_data+="<center>\n"
+zen_d=-1
+d=int(BIT_length*mp.log(2,10)/mp.log(3,10))
+Nzero=BIT_length-d
+
+out_html="<!DOCTYPE HTML>\n"
+out_html+="<html lang=\"ja\">\n"
+out_html+="<head>\n"
+out_html+="<meta charset=\"UTF-8\">\n"
+out_html+="<title俯瞰図の上限のPVを利用して指定したstopping time(Glide)を持つ整数(Generator)を求める</title>\n"
+out_html+="</head>\n"
+out_html+="<body>\n"
+out_html+="<center>\n"
+if option=="no":
+        html_data+="<h3>俯瞰図の上限のPVを利用して指定したstopping time(Glide)を持つ整数(Generator)を求める</h3>\n"
+else:
+        html_data+="<h3>俯瞰図の上限のPVを利用して指定したstopping time(Glide)を持つ整数(Generator)を求める</h3>\n"
+
+html_data+="<table border=1>\n"
+if option=="no":
+             html_data+="<td colspan=5 nowrap align=left> 上限のPV = 1<sup>"+str(d)+"</sup><br>[記号] x<sup>n</sup> はx(x=1 or 0)がn個連続することを示す</td></tr>\n"
+             html_data+="<tr><th align=center>確定収束PV</th><th align=center>１の個数</th><th align=left> Generator </th><th  align=left> Stopping Time<br> (Glide)</th><th align=center>mod 32</th></tr>\n"
+else:
+             html_data+="<td colspan=5 nowrap align=left>確定収束PV=1<sup>"+str(d)+"</sup>0<sup>"+str(Nzero)+"</sup></td></tr>\n" 
+             html_data+="<tr><th align=center>PVの長さ</th><th align=center>１の個数</th><th align=left> Generator </th><th  align=left> Stopping Time<br> (Glide)</th><th align=center>mod 32</th></tr>\n"
+
+if option=="no":
+    for kk in range(1,d+1): 
+       inPV_k=int(1.0+kk*mp.log(3,10)/mp.log(2,10))
+       inNum_d=kk
+       gen_generator= Upper_gen(inPV_k,inNum_d)
+       gen_Generator= gen_generator[0]
+       gen_Ones=kk
+       zeroN=inPV_k-kk
+       gen_Length="1<sup>"+str(kk)+"</sup>0<sup>"+str(zeroN)+"</sup>"
+       gen_Glide=inPV_k
+       module=gen_Generator % 32  ##  n/32+r
+       out_html="<tr><td align=center> "+str(gen_Length)+"</td><td align=center> "+str(inNum_d)+"</td><th align=left> "+str(gen_Generator)+"</th><td align=left> "+str(gen_Glide)+"</td><td align=center>"+str(module)+"</td></tr>\n"
+       html_data+="<tr><td align=center> "+str(gen_Length)+"</td><td align=center> "+str(gen_Ones)+"</td><th align=left> "+str(gen_Generator)+"</th><td align=left> "+str(gen_Glide)+"</td><td align=center>"+str(module)+"</td></tr>\n"
+       fp.write(out_html)     ##  output data
+else:
+       inPV_k=int(1.0+d*mp.log(3,10)/mp.log(2,10))
+       inNum_d=d
+       gen_generator= Upper_gen(inPV_k,inNum_d)
+       gen_Generator= gen_generator[0]
+       gen_Ones=d
+       gen_Length=inPV_k
+       gen_Glide=inPV_k
+       module=gen_Generator%32  ##  n/32+r
+       html_data+="<tr><td align=center> "+str(gen_Length)+"</td><td align=center> "+str(gen_Ones)+"</td><th align=left> "+str(gen_Generator)+"</th><td align=left> "+str(gen_Glide)+"</td><td align=center>"+str(module)+"</td></tr>\n"
+html_data+="</table></body></html>\n"
+print(html_data)

@@ -1,0 +1,211 @@
+#!python.exe
+# -*- coding: UTF-8 -*-
+import urllib.parse
+import sys, io 
+import os
+import datetime
+import math
+from mpmath import mp
+########################################################################
+##  Collatz conjecture                                                ##
+##  Jprogram3.py                                                      ##
+##  A bird's-eye view of the PVr                                      ##
+########################################################################
+def get_message():
+   try:
+      input_message = input()
+      input_message = urllib.parse.unquote(input_message)
+      parse_message = urllib.parse.parse_qs(input_message)
+      return parse_message["pattern"][0],parse_message["dummy"][0]
+   except Exception as e:
+      a=0
+      b=0
+      return a,b
+
+def Glide_check(number):
+      M=""
+      first="Y"
+      flag=0
+      zero=0
+      one=1
+      n =zero
+      parity_vector=""
+
+      N=number
+      n2=number
+      while True:
+          if n2 <= 1 :
+              break    ## if ( $n2 <= 1) { break }
+          n = n + 1 
+          if  (n2 % 2) == 0:   ##if (n2 % 2 == 0) amari
+              n1 = n2
+              n2 = n2//2        ##   n2=n2/2
+              parity_vector=parity_vector+"0"
+              if ( flag == 0) and (first=="Y") and (n2<N): 
+                 flag = 1
+                 M = n 
+                 R = n2 
+              if (flag == 1) and (first=="Y" ):
+                 first="N"
+          else:
+              n1 = n2
+              n2 = n2*3   ## $n2 = $n2 * 3
+              n2 = n2+1   ## n2 = n2 * 3 + 1
+              n2 = n2//2  ## $n2 = ($n2 * 3 + 1)/2
+              parity_vector=parity_vector+"1"
+
+              if ( flag == 0) and (first=="Y") and (n2<N ):
+                  flag = 1
+                  M = n 
+                  R = n2 
+      out1=M  ## Glide
+      out2=n  ## total stopping time
+      out3=parity_vector ##pv  total stopping time
+
+      return  out1,out2,out3
+
+if __name__ == '__main__':
+   mp.dps = 200
+
+zero=0
+one_minus=-1
+one=1
+
+mess = get_message()
+pattern = mess[0]
+if pattern != None:
+   number = int(pattern)   
+   Glide_number=Glide_check(number)
+   Glide_No=Glide_number[0]
+   Reach1=Glide_number[1]
+   Glide_Parity=Glide_number[2].strip()   ##parity_vector
+else:
+   number=0
+   Glide_number=0
+   Glide_No=0
+   Reach1=0
+   Glide_Parity=""   ##parity_vector
+
+Message="入力整数= "+str(number)+" ; 状況:Glide= "+str(Glide_No)+", １に到達するまでの回数1 = "+str(Reach1)+"  (<a href=\"javascript:void(0);\" onclick=\"openWin()\">この俯瞰図の説明</a>)"
+
+PATTERN=Glide_Parity
+BIT_PATTERN=PATTERN
+BIT_length=len(BIT_PATTERN)
+BIT_odd=str.count(BIT_PATTERN,"1")
+
+Table_max=BIT_length+30  ## size of table
+K_table=[[] for i in range(0,Table_max)]
+Bit_table=[' ']
+Pat_table=[' ']
+
+print("Content-type: text/html; charset=UTF-8")
+print()
+html_data="<!DOCTYPE HTML>\n"
+html_data+="<html lang=\"ja\">\n"
+html_data+="<head>\n"
+html_data+="<meta charset=\"UTF-8\">\n"
+html_data+="<title>整数によるParity Vector俯瞰図</title>\n"
+####################################################
+html_data+="<script language=\"JavaScript\" type=\"text/javascript\">"
+html_data+="function openWin(){;"
+html_data+="  newWin = window.open('JViewOfBird.html','ViewOfBird','width=400,height=300,  scrollbars=no,status=no,toolbar=no,location=no,menubar=no,resizable=yes');"
+html_data+="   newWin.focus();"
+html_data+=" }"
+html_data+="</script>"
+####################################################
+html_data+="</head>\n"
+html_data+="<body>\n"
+##html_data+="<center>\n"
+html_data+="<font color=red><b>整数入力によるParity Vector(PV)の俯瞰図</b></font><br>\n" 
+##html_data+="</center>\n"
+
+html_data  +="正の整数(>1)を入力し実行ボタンをクリックしてください。<br>"
+html_data+="<form action='Jprogram3.py' method='post'><input type='text' name='pattern' size='100'  oninput=\"value = value.replace(/[^0-9]+/i,'');\"/><input type='hidden' name='dummy' value='0' />   <input type=\"submit\" value=\"実行\"></form>\n"
+
+html_data+=Message+"\n"
+
+html_data+="<table border=1 >\n"
+html_data+="<tr bgcolor=orange>"
+html_data+="<th bgcolor=white  align=left nowrap><font size='-1'>PV---></font>"+ str(Pat_table[0])+"</th>"
+
+#for i in range(0,BIT_length-1):
+for i in range(0,BIT_length):
+
+   Pat_table.append(BIT_PATTERN[i])
+   html_data+="<th>"+str(Pat_table[i+1])+"</th>"
+
+html_data+="</tr>"
+
+Bit_table=[[' ']*Table_max for i in range(0,Table_max)]
+
+zen_d=-1
+for  i in range(0,Table_max): 
+   Gyo_end="n"
+   if (i==0):
+      html_data+="<tr>"   
+      K_table[i]="k　 d"
+      html_data+="<th align=center nowrap>"+K_table[i]+"</th>"
+      for j in range(0,Table_max):
+           Bit_table[i][j]=j
+           html_data+="<th align=center nowrap>　"+str(Bit_table[i][j])+"</th>"
+      html_data+="</tr>"
+   else:
+      K_table[i]=i
+      d=int(i*mp.log(2,10)/mp.log(3,10))
+      for  j in range(0,Table_max):
+             if(j==d):
+                 if( zen_d != d ):
+                      Bit_table[i][j]="0"
+                      zen_d=d
+                 else:
+                      Bit_table[i][j]=" ";
+             else:
+                 if(j==(i+1)):
+                      Bit_table[i][j]="＊"  
+                      Gyo_end="y"
+                 else:
+                      Bit_table[i][j]=" "
+             if Gyo_end=="y" :
+                 break
+
+Pos_i=1
+Pos_j=0
+Pos_bit=0
+for i in range(0,BIT_length):
+   Pos_i=i+1
+   BIT=Pat_table[i+1]
+   if(Bit_table[i][i]=='＊'):
+      continue
+   if(BIT=="0"):
+      Bit_table[Pos_i][Pos_j]="<font color=red><b>０</b></font>"
+   else:
+      Bit_table[Pos_i][Pos_j+1]="<font color=red><b>１</b></font>"
+      Pos_j=Pos_j+1
+
+zen_d=-1
+for i in range(1,Table_max):
+     html_data+="<tr>"
+     K_table[i]=i
+     html_data+="<th align=center>"+str(K_table[i])+"</th>"
+     if(i >= 1):
+         d=int(i*mp.log(2,10)/mp.log(3,10))
+     
+     for j in range(0,Table_max):
+        if j==d :
+           if(zen_d!=d):
+               html_data+="<td align=center bgcolor=yellow>"+Bit_table[i][j]+"</td>"
+               zen_d=d
+           else: 
+               html_data+="<td align=center>"+Bit_table[i][j]+"</td>"
+        else: 
+           html_data+="<td align=center>"+Bit_table[i][j]+"</td>"
+        if(Bit_table[i][j]=="＊"):
+           break
+       
+     html_data+="</tr>"
+
+html_data+="</table>\n"
+html_data+="</center>\n"
+html_data+="</body>\n"
+html_data+="</html>\n"
+print(html_data)
